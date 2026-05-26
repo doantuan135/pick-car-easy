@@ -394,6 +394,25 @@
                 </select>
             </div>
             <div class="control-group">
+                <label for="seats">💺 Số Chỗ Ngồi</label>
+                <select id="seats" onchange="filterCars()">
+                    <option value="">Tất cả chỗ ngồi</option>
+                    <option value="5">5 chỗ</option>
+                    <option value="7">7 chỗ</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="engineType">⚡ Loại Động Cơ</label>
+                <select id="engineType" onchange="filterCars()">
+                    <option value="">Tất cả động cơ</option>
+                    <option value="Xăng">Xăng</option>
+                    <option value="EV">Xe điện (EV)</option>
+                    <option value="HEV">Hybrid tự sạc (HEV)</option>
+                    <option value="PHEV">Hybrid cắm sạc (PHEV)</option>
+                    <option value="Dầu">Dầu (Diesel)</option>
+                </select>
+            </div>
+            <div class="control-group">
                 <label for="maxPrice">💰 Giá Tối Đa (triệu VND)</label>
                 <input type="number" id="maxPrice" placeholder="Nhập giá tối đa" onchange="filterCars()">
             </div>
@@ -442,6 +461,8 @@
             'Honda': [
                 {
                     name: 'Honda CR-V',
+                    seats: 5,
+                    engineType: 'HEV / Xăng',
                     chassis: 'Monocoque unibody',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -480,6 +501,8 @@
                 },
                 {
                     name: 'Honda Civic',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque unibody',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -519,6 +542,8 @@
             'Hyundai': [
                 {
                     name: 'Hyundai Santa Fe',
+                    seats: 7,
+                    engineType: 'HEV / Xăng / Dầu',
                     chassis: 'Monocoque (N3 Platform)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -555,6 +580,8 @@
                 },
                 {
                     name: 'Hyundai Tucson',
+                    seats: 5,
+                    engineType: 'Xăng / Dầu',
                     chassis: 'Monocoque (N3 Platform)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -594,6 +621,8 @@
             'Kia': [
                 {
                     name: 'Kia Sorento',
+                    seats: 7,
+                    engineType: 'HEV / Xăng / Dầu',
                     chassis: 'Monocoque',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -630,6 +659,8 @@
                 },
                 {
                     name: 'Kia Sportage',
+                    seats: 5,
+                    engineType: 'Xăng / Dầu',
                     chassis: 'Monocoque',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -669,6 +700,8 @@
             'Mazda': [
                 {
                     name: 'Mazda CX-5',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (SkyActiv-Chassis)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -708,6 +741,8 @@
             'Mitsubishi': [
                 {
                     name: 'Mitsubishi Outlander',
+                    seats: 7,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (RISE body)',
                     suspension: 'Trước: MacPherson với thanh cân bằng, Sau: Liên kết đa điểm với thanh cân bằng',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -747,6 +782,8 @@
             'Suzuki': [
                 {
                     name: 'Suzuki Ertiga',
+                    seats: 7,
+                    engineType: 'HEV',
                     chassis: 'Monocoque (HEARTECT platform)',
                     suspension: 'Trước: MacPherson với lò xo cuộn, Sau: Thanh xoắn với lò xo cuộn',
                     brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
@@ -786,6 +823,8 @@
             'Geely': [
                 {
                     name: 'Geely Monjaro',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (CMA Platform)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -825,6 +864,8 @@
             'Omoda/Jaeceo': [
                 {
                     name: 'Omoda C5',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque unibody',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm (bản cao) / Dầm xoắn',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -864,6 +905,8 @@
             'Lynk & Co': [
                 {
                     name: 'Lynk & Co 05',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (CMA Platform)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
@@ -900,6 +943,8 @@
                 },
                 {
                     name: 'Lynk & Co 06',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (BMA Platform)',
                     suspension: 'Trước: MacPherson, Sau: Đa liên kết độc lập',
                     brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
@@ -939,6 +984,8 @@
             'BYD': [
                 {
                     name: 'BYD Sealion 6 DM-i',
+                    seats: 5,
+                    engineType: 'PHEV',
                     chassis: 'Monocoque',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
@@ -975,6 +1022,8 @@
                 },
                 {
                     name: 'BYD Yuan Plus EV',
+                    seats: 5,
+                    engineType: 'EV',
                     chassis: 'Monocoque (e-Platform 3.0)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
@@ -1014,6 +1063,8 @@
             'Wuling': [
                 {
                     name: 'Wuling Hongguang EV',
+                    seats: 7,
+                    engineType: 'EV',
                     chassis: 'Monocoque',
                     suspension: 'Trước: MacPherson, Sau: Dầm xoắn phụ thuộc',
                     brakes: 'Trước: Đĩa, Sau: Tang trống',
@@ -1052,6 +1103,8 @@
             'Skoda': [
                 {
                     name: 'Skoda Slavia',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (MQB-A0-IN)',
                     suspension: 'Trước: MacPherson, Sau: Thanh xoắn nửa độc lập',
                     brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
@@ -1088,6 +1141,8 @@
                 },
                 {
                     name: 'Skoda Kushaq',
+                    seats: 5,
+                    engineType: 'Xăng',
                     chassis: 'Monocoque (MQB-A0-IN)',
                     suspension: 'Trước: MacPherson với thanh chống lật, Sau: Thanh xoắn với lò xo cuộn',
                     brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
@@ -1126,6 +1181,8 @@
             'Toyota': [
                 {
                     name: 'Toyota Camry',
+                    seats: 5,
+                    engineType: 'HEV / Xăng',
                     chassis: 'Monocoque (TNGA-K platform)',
                     suspension: 'Trước: MacPherson, Sau: Xương đòn kép',
                     brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
@@ -1208,6 +1265,8 @@
         function filterCars() {
             const selectedBrand = document.getElementById('brand').value;
             const selectedRegion = document.getElementById('region').value;
+            const selectedSeats = document.getElementById('seats').value;
+            const selectedEngine = document.getElementById('engineType').value;
             const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
 
             let filteredCars = [];
@@ -1218,6 +1277,16 @@
                 Object.values(cars).forEach(brandCars => {
                     filteredCars = filteredCars.concat(brandCars);
                 });
+            }
+
+            // Filter by Seats
+            if (selectedSeats) {
+                filteredCars = filteredCars.filter(car => car.seats === parseInt(selectedSeats));
+            }
+
+            // Filter by Engine Type
+            if (selectedEngine) {
+                filteredCars = filteredCars.filter(car => car.engineType && car.engineType.includes(selectedEngine));
             }
 
             // Filter by price
@@ -1256,8 +1325,17 @@
                 const selectedRegion = document.getElementById('region').value || 'Hà Nội';
                 const price = car.prices[selectedRegion] / 1000000;
 
+                let badgeBg = 'var(--primary)';
+                if (car.engineType.includes('EV')) badgeBg = 'var(--success)';
+                else if (car.engineType.includes('PHEV')) badgeBg = '#8b5cf6';
+                else if (car.engineType.includes('HEV')) badgeBg = 'var(--secondary)';
+                else if (car.engineType.includes('Dầu')) badgeBg = '#6b7280';
+
                 carEl.innerHTML = `
-                    <div class="car-item-name">${car.name}</div>
+                    <div class="car-item-name" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>${car.name}</span>
+                        <span style="font-size: 0.75em; padding: 2px 6px; border-radius: 4px; background: ${badgeBg}; color: white; font-weight: bold; margin-left: 5px;">${car.engineType}</span>
+                    </div>
                     <div class="car-item-type">${car.type}</div>
                     <div class="car-item-price">💰 ${price.toFixed(0)} triệu (${selectedRegion})</div>
                 `;
