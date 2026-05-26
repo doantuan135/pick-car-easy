@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Xe Ô Tô - Tìm Mua Xe Toàn Diện 2026</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #f59e0b;
+            --danger: #ef4444;
+            --success: #10b981;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+            --border: #e5e7eb;
+            --text: #1f2937;
+            --bg: #ffffff;
+        }
+
+        html.dark-mode {
+            --primary: #3b82f6;
+            --secondary: #fbbf24;
+            --danger: #f87171;
+            --success: #34d399;
+            --dark: #0f172a;
+            --light: #1e293b;
+            --border: #334155;
+            --text: #f1f5f9;
+            --bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        html.dark-mode body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: var(--bg);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .header-title p {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 25px;
+            background: var(--light);
+            border-bottom: 1px solid var(--border);
+            align-items: end;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-size: 0.9em;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 10px 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9em;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .control-group select:focus,
+        .control-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            min-height: 500px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .car-item {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .car-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .car-item-name {
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .car-item-type {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 3px;
+        }
+
+        .car-item-price {
+            font-size: 0.9em;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+        }
+
+        .detail-section h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.9em;
+            border-bottom: 1px dotted var(--border);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .detail-value {
+            text-align: right;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .spec-item {
+            background: var(--light);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85em;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .spec-value {
+            color: var(--text);
+            margin-top: 2px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 15px;
+        }
+
+        .region-price-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .region-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: var(--light);
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .region-name {
+            font-weight: 600;
+        }
+
+        .region-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .dealer-item {
+            padding: 10px;
+            background: var(--light);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+        }
+
+        .dealer-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .dealer-info {
+            color: var(--text);
+            margin-top: 3px;
+        }
+
+        .footer {
+            background: var(--light);
+            color: var(--text);
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 1000px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .safety-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .adas-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .review-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .review-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title">
+                <h1>🚗 Dashboard Xe Ô Tô 2026</h1>
+                <p>Giá lăn bánh & Thông tin chi tiết - Cập nhật realtime</p>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="brand">🏢 Hãng Xe</label>
+                <select id="brand" onchange="filterCars()">
+                    <option value="">Tất cả hãng</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="region">📍 Khu Vực</label>
+                <select id="region" onchange="filterCars()">
+                    <option value="">Tất cả khu vực</option>
+                    <option value="Hà Nội">Hà Nội (12%)</option>
+                    <option value="Bắc Ninh">Bắc Ninh (10%)</option>
+                    <option value="Hải Dương">Hải Dương (10%)</option>
+                    <option value="Hải Phòng">Hải Phòng (10%)</option>
+                    <option value="Quảng Ninh">Quảng Ninh (10%)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="maxPrice">💰 Giá Tối Đa (triệu VND)</label>
+                <input type="number" id="maxPrice" placeholder="Nhập giá tối đa" onchange="filterCars()">
+            </div>
+            <button class="btn" onclick="updatePrices()">🔄 Cập Nhật Giá</button>
+        </div>
+
+        <div class="main-content">
+            <div class="column">
+                <div class="card">
+                    <h3>📋 Danh Sách Xe</h3>
+                    <div id="carList"></div>
+                </div>
+                <div class="card">
+                    <h3>📊 So Sánh Giá Theo Khu Vực</h3>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <h3>💳 Chi Tiết Giá Lăn Bánh</h3>
+                    <div id="priceDetails"></div>
+                </div>
+                <div class="card">
+                    <h3>📋 Thông Số & Tính Năng</h3>
+                    <div id="specsDetails"></div>
+                </div>
+                <div class="card">
+                    <h3>🏪 Mạng Lưới Đại Lý</h3>
+                    <div id="dealerDetails"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Dashboard Xe Ô Tô v2.0 | Cập nhật: Tháng 5/2026 | 📧 tuanvnaction@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        // All car brands and models database
+        const cars = {
+            // Japanese Brands
+            'Honda': [
+                {
+                    name: 'Honda CR-V',
+                    chassis: 'Monocoque unibody',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD / AWD',
+                    dimensions: '4691 x 1866 x 1681 mm',
+                    weight: '1593 - 1695 kg',
+                    groundClearance: '198 mm',
+                    fuelTank: '57L (Xăng) / 40L (Hybrid)',
+                    displacement: '1498 cc (Turbo) / 1993 cc (Hybrid)',
+                    colors: ['Trắng ngọc', 'Đen ánh', 'Xám', 'Đỏ', 'Xanh'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    engine: '1.5L Turbo/Hybrid',
+                    power: '184-204 PS',
+                    fuel: '6.2-7.5 L/100km',
+                    transmission: 'CVT/AT',
+                    safety: ['ABS', 'ESP', 'VSA', 'Collision Mitigation', 'Lane Keeping'],
+                    adas: ['Adaptive Cruise Control', 'Lane Departure Warning', 'Road Sign Recognition', 'Blind Spot Monitor'],
+                    variants: ['G', 'L', 'L AWD', 'e:HEV L', 'e:HEV RS'],
+                    amenities: ['8-inch touchscreen', 'Apple CarPlay/Android Auto', 'Power sunroof', '6 airbags'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'Edmunds Review', url: 'https://www.edmunds.com/car-news/2026-honda-cr-v-full-rating-review.html' },
+                        { source: 'Kelley Blue Book', url: 'https://www.kbb.com/honda/cr-v-hybrid/' },
+                        { source: 'Honda Specs', url: 'https://automobiles.honda.com/cr-v/specs-features-trim-comparison' }
+                    ],
+                    prices: { 'Hà Nội': 1165000000, 'Bắc Ninh': 1155000000, 'Hải Dương': 1150000000, 'Hải Phòng': 1145000000, 'Quảng Ninh': 1140000000 },
+                    variantPrices: {
+                        'G': { 'Hà Nội': 1015000000, 'Bắc Ninh': 1005000000, 'Hải Dương': 1000000000, 'Hải Phòng': 995000000, 'Quảng Ninh': 990000000 },
+                        'L': { 'Hà Nội': 1135000000, 'Bắc Ninh': 1125000000, 'Hải Dương': 1120000000, 'Hải Phòng': 1115000000, 'Quảng Ninh': 1110000000 },
+                        'L AWD': { 'Hà Nội': 1265000000, 'Bắc Ninh': 1255000000, 'Hải Dương': 1250000000, 'Hải Phòng': 1245000000, 'Quảng Ninh': 1240000000 },
+                        'e:HEV L': { 'Hà Nội': 1280000000, 'Bắc Ninh': 1270000000, 'Hải Dương': 1265000000, 'Hải Phòng': 1260000000, 'Quảng Ninh': 1255000000 },
+                        'e:HEV RS': { 'Hà Nội': 1380000000, 'Bắc Ninh': 1370000000, 'Hải Dương': 1365000000, 'Hải Phòng': 1360000000, 'Quảng Ninh': 1355000000 }
+                    }
+                },
+                {
+                    name: 'Honda Civic',
+                    chassis: 'Monocoque unibody',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4678 x 1802 x 1415 mm',
+                    weight: '1338 - 1380 kg',
+                    groundClearance: '134 mm',
+                    fuelTank: '47L',
+                    displacement: '1498 cc',
+                    colors: ['Trắng ngọc', 'Đen', 'Xám', 'Đỏ', 'Xanh'],
+                    type: '4 chỗ Sedan',
+                    image: 'https://images.unsplash.com/photo-1590362891033-56d7764a54a8?w=400&h=300&fit=crop',
+                    engine: '1.5L Turbo',
+                    power: '180 PS',
+                    fuel: '6.5 L/100km',
+                    transmission: 'CVT',
+                    safety: ['ABS', 'ESP', 'VSA', 'Collision Mitigation'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping'],
+                    variants: ['G', 'E', 'RS'],
+                    amenities: ['7-inch touchscreen', 'Apple CarPlay', 'Power windows', '6 airbags'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/honda/civic/' },
+                        { source: 'KBB', url: 'https://www.kbb.com/honda/civic/' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/honda/civic/' }
+                    ],
+                    prices: { 'Hà Nội': 750000000, 'Bắc Ninh': 735000000, 'Hải Dương': 730000000, 'Hải Phòng': 725000000, 'Quảng Ninh': 720000000 },
+                    variantPrices: {
+                        'G': { 'Hà Nội': 650000000, 'Bắc Ninh': 635000000, 'Hải Dương': 630000000, 'Hải Phòng': 625000000, 'Quảng Ninh': 620000000 },
+                        'E': { 'Hà Nội': 720000000, 'Bắc Ninh': 705000000, 'Hải Dương': 700000000, 'Hải Phòng': 695000000, 'Quảng Ninh': 690000000 },
+                        'RS': { 'Hà Nội': 800000000, 'Bắc Ninh': 785000000, 'Hải Dương': 780000000, 'Hải Phòng': 775000000, 'Quảng Ninh': 770000000 }
+                    }
+                }
+            ],
+
+            'Hyundai': [
+                {
+                    name: 'Hyundai Santa Fe',
+                    chassis: 'Monocoque (N3 Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện C-MDPS',
+                    driveType: 'FWD / HTRAC AWD',
+                    dimensions: '4830 x 1900 x 1720 mm',
+                    weight: '1810 - 1925 kg',
+                    groundClearance: '177 mm',
+                    fuelTank: '67L',
+                    displacement: '2497 cc / 1598 cc (Hybrid)',
+                    colors: ['Trắng', 'Đen', 'Đỏ', 'Vàng cát', 'Xanh dương'],
+                    type: '7 chỗ SUV Hybrid',
+                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+                    engine: '2.5L Turbo + Hybrid',
+                    power: '226 PS',
+                    fuel: '7.5 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: ['ABS', 'ESC', 'Collision Warning', '6 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Alert'],
+                    variants: ['Standard', 'Comfort', 'Exclusive'],
+                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof', 'Leather seats'],
+                    review: 'https://www.youtube.com/watch?v=WtVeYboFhc8',
+                    reviews: [
+                        { source: 'YouTube (Honest Review 2026)', url: 'https://www.youtube.com/watch?v=WtVeYboFhc8' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/suvs/honda-cr-v-vs-hyundai-santa-fe-two-row-suv-review-a9311891048/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/hyundai/santa-fe/' }
+                    ],
+                    prices: { 'Hà Nội': 1368000000, 'Bắc Ninh': 1350000000, 'Hải Dương': 1345000000, 'Hải Phòng': 1340000000, 'Quảng Ninh': 1335000000 },
+                    variantPrices: {
+                        'Standard': { 'Hà Nội': 1240000000, 'Bắc Ninh': 1220000000, 'Hải Dương': 1215000000, 'Hải Phòng': 1210000000, 'Quảng Ninh': 1205000000 },
+                        'Comfort': { 'Hà Nội': 1350000000, 'Bắc Ninh': 1330000000, 'Hải Dương': 1325000000, 'Hải Phòng': 1320000000, 'Quảng Ninh': 1315000000 },
+                        'Exclusive': { 'Hà Nội': 1480000000, 'Bắc Ninh': 1460000000, 'Hải Dương': 1455000000, 'Hải Phòng': 1450000000, 'Quảng Ninh': 1445000000 }
+                    }
+                },
+                {
+                    name: 'Hyundai Tucson',
+                    chassis: 'Monocoque (N3 Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện C-MDPS',
+                    driveType: 'FWD / HTRAC AWD',
+                    dimensions: '4630 x 1865 x 1695 mm',
+                    weight: '1500 - 1650 kg',
+                    groundClearance: '181 mm',
+                    fuelTank: '54L',
+                    displacement: '1999 cc (Xăng) / 1598 cc (Turbo) / 1998 cc (Dầu)',
+                    colors: ['Trắng', 'Đen', 'Đỏ', 'Vàng cát', 'Xám'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    engine: '1.6L Turbo',
+                    power: '177 PS',
+                    fuel: '6.8 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: ['ABS', 'ESC', '6 airbags'],
+                    adas: ['Cruise Control', 'Lane Keeping'],
+                    variants: ['Base', 'Comfort', 'Premium'],
+                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Sunroof'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/hyundai/tucson/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/hyundai/tucson/' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/hyundai/tucson/' }
+                    ],
+                    prices: { 'Hà Nội': 850000000, 'Bắc Ninh': 835000000, 'Hải Dương': 830000000, 'Hải Phòng': 825000000, 'Quảng Ninh': 820000000 },
+                    variantPrices: {
+                        'Base': { 'Hà Nội': 750000000, 'Bắc Ninh': 735000000, 'Hải Dương': 730000000, 'Hải Phòng': 725000000, 'Quảng Ninh': 720000000 },
+                        'Comfort': { 'Hà Nội': 850000000, 'Bắc Ninh': 835000000, 'Hải Dương': 830000000, 'Hải Phòng': 825000000, 'Quảng Ninh': 820000000 },
+                        'Premium': { 'Hà Nội': 950000000, 'Bắc Ninh': 935000000, 'Hải Dương': 930000000, 'Hải Phòng': 925000000, 'Quảng Ninh': 920000000 }
+                    }
+                }
+            ],
+
+            'Kia': [
+                {
+                    name: 'Kia Sorento',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (MDPS)',
+                    driveType: 'FWD / AWD',
+                    dimensions: '4810 x 1900 x 1700 mm',
+                    weight: '1710 - 1910 kg',
+                    groundClearance: '176 mm',
+                    fuelTank: '67L',
+                    displacement: '2497 cc (Xăng) / 2151 cc (Dầu) / 1598 cc (Hybrid)',
+                    colors: ['Trắng', 'Đen', 'Xám', 'Xanh', 'Đỏ'],
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    engine: '2.4L Turbo/2.2L Diesel',
+                    power: '277 PS / 200 PS',
+                    fuel: '7.5 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: ['ABS', 'ESC', 'Collision Warning', '6 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Parking Sensors'],
+                    variants: ['L', 'EX', 'SX'],
+                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay', 'Sunroof'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/kia/sorento/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/kia/sorento/' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/kia/sorento/' }
+                    ],
+                    prices: { 'Hà Nội': 1180000000, 'Bắc Ninh': 1160000000, 'Hải Dương': 1155000000, 'Hải Phòng': 1150000000, 'Quảng Ninh': 1140000000 },
+                    variantPrices: {
+                        'L': { 'Hà Nội': 1040000000, 'Bắc Ninh': 1020000000, 'Hải Dương': 1015000000, 'Hải Phòng': 1010000000, 'Quảng Ninh': 1000000000 },
+                        'EX': { 'Hà Nội': 1180000000, 'Bắc Ninh': 1160000000, 'Hải Dương': 1155000000, 'Hải Phòng': 1150000000, 'Quảng Ninh': 1140000000 },
+                        'SX': { 'Hà Nội': 1300000000, 'Bắc Ninh': 1280000000, 'Hải Dương': 1275000000, 'Hải Phòng': 1270000000, 'Quảng Ninh': 1260000000 }
+                    }
+                },
+                {
+                    name: 'Kia Sportage',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (MDPS)',
+                    driveType: 'FWD / AWD',
+                    dimensions: '4660 x 1865 x 1700 mm',
+                    weight: '1540 - 1690 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: '54L',
+                    displacement: '1999 cc (Xăng) / 1598 cc (Turbo) / 1998 cc (Dầu)',
+                    colors: ['Trắng', 'Đen', 'Xám', 'Xanh', 'Đỏ'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    engine: '1.6L Turbo/2.0L Diesel',
+                    power: '177 PS / 186 PS',
+                    fuel: '6.5 L/100km',
+                    transmission: 'AT 6-speed',
+                    safety: ['ABS', 'ESC', '6 airbags'],
+                    adas: ['Cruise Control', 'Parking Sensors'],
+                    variants: ['Standard', 'Plus', 'Premium'],
+                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Alloy wheels'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/kia/sportage/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/kia/sportage/' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/kia/sportage/' }
+                    ],
+                    prices: { 'Hà Nội': 920000000, 'Bắc Ninh': 900000000, 'Hải Dương': 895000000, 'Hải Phòng': 890000000, 'Quảng Ninh': 885000000 },
+                    variantPrices: {
+                        'Standard': { 'Hà Nội': 800000000, 'Bắc Ninh': 780000000, 'Hải Dương': 775000000, 'Hải Phòng': 770000000, 'Quảng Ninh': 765000000 },
+                        'Plus': { 'Hà Nội': 920000000, 'Bắc Ninh': 900000000, 'Hải Dương': 895000000, 'Hải Phòng': 890000000, 'Quảng Ninh': 885000000 },
+                        'Premium': { 'Hà Nội': 1040000000, 'Bắc Ninh': 1020000000, 'Hải Dương': 1015000000, 'Hải Phòng': 1010000000, 'Quảng Ninh': 1005000000 }
+                    }
+                }
+            ],
+
+            'Mazda': [
+                {
+                    name: 'Mazda CX-5',
+                    chassis: 'Monocoque (SkyActiv-Chassis)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPAS)',
+                    driveType: 'FWD / AWD',
+                    dimensions: '4590 x 1845 x 1680 mm',
+                    weight: '1550 - 1640 kg',
+                    groundClearance: '200 mm',
+                    fuelTank: '56L (FWD) / 58L (AWD)',
+                    displacement: '1998 cc / 2488 cc',
+                    colors: ['Đỏ Soul Red', 'Trắng Snowflake', 'Xám Machine', 'Đen Jet Black'],
+                    type: '5 chỗ SUV Skyactiv',
+                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+                    engine: '2.0L Skyactiv-G/2.2L Skyactiv-D',
+                    power: '165 PS / 175 PS',
+                    fuel: '6.0 L/100km',
+                    transmission: 'AT 6-speed',
+                    safety: ['ABS', 'ESP', 'i-Activsense', '6 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Monitor'],
+                    variants: ['Standard', 'Select', 'Premium'],
+                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Power sunroof'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/mazda/cx-5/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/mazda/cx-5/' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/mazda/cx-5/' }
+                    ],
+                    prices: { 'Hà Nội': 980000000, 'Bắc Ninh': 950000000, 'Hải Dương': 945000000, 'Hải Phòng': 940000000, 'Quảng Ninh': 935000000 },
+                    variantPrices: {
+                        'Standard': { 'Hà Nội': 850000000, 'Bắc Ninh': 820000000, 'Hải Dương': 815000000, 'Hải Phòng': 810000000, 'Quảng Ninh': 805000000 },
+                        'Select': { 'Hà Nội': 980000000, 'Bắc Ninh': 950000000, 'Hải Dương': 945000000, 'Hải Phòng': 940000000, 'Quảng Ninh': 935000000 },
+                        'Premium': { 'Hà Nội': 1100000000, 'Bắc Ninh': 1070000000, 'Hải Dương': 1065000000, 'Hải Phòng': 1060000000, 'Quảng Ninh': 1055000000 }
+                    }
+                }
+            ],
+
+            'Mitsubishi': [
+                {
+                    name: 'Mitsubishi Outlander',
+                    chassis: 'Monocoque (RISE body)',
+                    suspension: 'Trước: MacPherson với thanh cân bằng, Sau: Liên kết đa điểm với thanh cân bằng',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4695 x 1810 x 1710 mm',
+                    weight: '1535 - 1610 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: '60L',
+                    displacement: '1998 cc',
+                    colors: ['Trắng', 'Đen', 'Đỏ', 'Xám', 'Nâu'],
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    engine: '2.4L MIVEC',
+                    power: '175 PS',
+                    fuel: '7.8 L/100km',
+                    transmission: 'CVT',
+                    safety: ['ABS', 'ASC', 'Collision Mitigation', '6 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping'],
+                    variants: ['GLX', 'CVT', 'Premium'],
+                    amenities: ['7-inch touchscreen', 'Apple CarPlay', 'Power windows'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/mitsubishi/outlander/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/mitsubishi/outlander/' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 910000000, 'Bắc Ninh': 890000000, 'Hải Dương': 885000000, 'Hải Phòng': 880000000, 'Quảng Ninh': 875000000 },
+                    variantPrices: {
+                        'GLX': { 'Hà Nội': 790000000, 'Bắc Ninh': 770000000, 'Hải Dương': 765000000, 'Hải Phòng': 760000000, 'Quảng Ninh': 755000000 },
+                        'CVT': { 'Hà Nội': 910000000, 'Bắc Ninh': 890000000, 'Hải Dương': 885000000, 'Hải Phòng': 880000000, 'Quảng Ninh': 875000000 },
+                        'Premium': { 'Hà Nội': 1030000000, 'Bắc Ninh': 1010000000, 'Hải Dương': 1005000000, 'Hải Phòng': 1000000000, 'Quảng Ninh': 995000000 }
+                    }
+                }
+            ],
+
+            'Suzuki': [
+                {
+                    name: 'Suzuki Ertiga',
+                    chassis: 'Monocoque (HEARTECT platform)',
+                    suspension: 'Trước: MacPherson với lò xo cuộn, Sau: Thanh xoắn với lò xo cuộn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4395 x 1735 x 1690 mm',
+                    weight: '1115 - 1130 kg',
+                    groundClearance: '180 mm',
+                    fuelTank: '45L',
+                    displacement: '1462 cc',
+                    colors: ['Trắng', 'Đen', 'Bạc', 'Xám', 'Đỏ'],
+                    type: '7 chỗ MPV Hybrid',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    engine: '1.5L K15B Hybrid',
+                    power: '105 PS',
+                    fuel: '4.8 L/100km',
+                    transmission: 'CVT',
+                    safety: ['ABS', 'Brake Assist', 'Collision Mitigation', '6 airbags'],
+                    adas: ['Lane Departure Warning'],
+                    variants: ['MT', 'AT Sport Limited'],
+                    amenities: ['5-inch touchscreen', 'Power windows', 'Rear parking sensor'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/suzuki/ertiga/' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
+                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 650000000, 'Bắc Ninh': 630000000, 'Hải Dương': 625000000, 'Hải Phòng': 620000000, 'Quảng Ninh': 615000000 },
+                    variantPrices: {
+                        'MT': { 'Hà Nội': 580000000, 'Bắc Ninh': 560000000, 'Hải Dương': 555000000, 'Hải Phòng': 550000000, 'Quảng Ninh': 545000000 },
+                        'AT Sport Limited': { 'Hà Nội': 650000000, 'Bắc Ninh': 630000000, 'Hải Dương': 625000000, 'Hải Phòng': 620000000, 'Quảng Ninh': 615000000 }
+                    }
+                }
+            ],
+
+            // Chinese Brands
+            'Geely': [
+                {
+                    name: 'Geely Monjaro',
+                    chassis: 'Monocoque (CMA Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'AWD (4WD)',
+                    dimensions: '4770 x 1895 x 1689 mm',
+                    weight: '1780 kg',
+                    groundClearance: '210 mm',
+                    fuelTank: '62L',
+                    displacement: '1969 cc (Turbo)',
+                    colors: ['Trắng', 'Đen', 'Xám xanh', 'Bạc'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    engine: '1.5L Turbo/1.8L Turbo',
+                    power: '177 PS / 218 PS',
+                    fuel: '6.5 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: ['ABS', 'ESC', '8 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Monitor'],
+                    variants: ['Comfort', 'Luxury', 'Premium'],
+                    amenities: ['12.3-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
+                    review: 'https://www.youtube.com/watch?v=oKXjSYQQtHs',
+                    reviews: [
+                        { source: 'YouTube (Daniel Chavarría 2026 Review)', url: 'https://www.youtube.com/watch?v=oKXjSYQQtHs' },
+                        { source: 'Geely Vietnam', url: 'https://www.geely.com/en/models/monjaro' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 680000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
+                    variantPrices: {
+                        'Comfort': { 'Hà Nội': 580000000, 'Bắc Ninh': 565000000, 'Hải Dương': 560000000, 'Hải Phòng': 555000000, 'Quảng Ninh': 550000000 },
+                        'Luxury': { 'Hà Nội': 680000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
+                        'Premium': { 'Hà Nội': 820000000, 'Bắc Ninh': 805000000, 'Hải Dương': 800000000, 'Hải Phòng': 795000000, 'Quảng Ninh': 790000000 }
+                    }
+                }
+            ],
+
+            'Omoda/Jaeceo': [
+                {
+                    name: 'Omoda C5',
+                    chassis: 'Monocoque unibody',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm (bản cao) / Dầm xoắn',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4400 x 1830 x 1585 mm',
+                    weight: '1420 - 1455 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: '51L',
+                    displacement: '1498 cc (Turbo)',
+                    colors: ['Xám đậm', 'Trắng', 'Đen', 'Xanh dương', 'Bạc'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    engine: '1.6L Turbo',
+                    power: '197 PS',
+                    fuel: '6.8 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: ['ABS', 'ESC', '8 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Parking Assist'],
+                    variants: ['Comfort', 'Premium', 'Flagship'],
+                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay', 'Sunroof'],
+                    review: 'https://www.parkers.co.uk/omoda/5/review/',
+                    reviews: [
+                        { source: 'Parkers Review', url: 'https://www.parkers.co.uk/omoda/5/review/' },
+                        { source: 'Cinch Review', url: 'https://www.cinch.co.uk/used-cars/omoda/5/review' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 720000000, 'Bắc Ninh': 700000000, 'Hải Dương': 695000000, 'Hải Phòng': 690000000, 'Quảng Ninh': 685000000 },
+                    variantPrices: {
+                        'Comfort': { 'Hà Nội': 620000000, 'Bắc Ninh': 600000000, 'Hải Dương': 595000000, 'Hải Phòng': 590000000, 'Quảng Ninh': 585000000 },
+                        'Premium': { 'Hà Nội': 720000000, 'Bắc Ninh': 700000000, 'Hải Dương': 695000000, 'Hải Phòng': 690000000, 'Quảng Ninh': 685000000 },
+                        'Flagship': { 'Hà Nội': 850000000, 'Bắc Ninh': 830000000, 'Hải Dương': 825000000, 'Hải Phòng': 820000000, 'Quảng Ninh': 815000000 }
+                    }
+                }
+            ],
+
+            'Lynk & Co': [
+                {
+                    name: 'Lynk & Co 05',
+                    chassis: 'Monocoque (CMA Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'AWD',
+                    dimensions: '4592 x 1879 x 1628 mm',
+                    weight: '1788 kg',
+                    groundClearance: '185 mm',
+                    fuelTank: '54L',
+                    displacement: '1969 cc (Turbo)',
+                    colors: ['Đen', 'Xám', 'Trắng'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+                    engine: '2.0L Turbo',
+                    power: '238 PS',
+                    fuel: '7.2 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: ['ABS', 'ESC', '8 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Monitor'],
+                    variants: ['Plus', 'Pro', 'Premium'],
+                    amenities: ['12.3-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
+                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' },
+                        { source: 'Lynk & Co Vietnam', url: 'https://www.lynkco.com/' }
+                    ],
+                    prices: { 'Hà Nội': 1590000000, 'Bắc Ninh': 1550000000, 'Hải Dương': 1540000000, 'Hải Phòng': 1530000000, 'Quảng Ninh': 1520000000 },
+                    variantPrices: {
+                        'Plus': { 'Hà Nội': 1390000000, 'Bắc Ninh': 1350000000, 'Hải Dương': 1340000000, 'Hải Phòng': 1330000000, 'Quảng Ninh': 1320000000 },
+                        'Pro': { 'Hà Nội': 1590000000, 'Bắc Ninh': 1550000000, 'Hải Dương': 1540000000, 'Hải Phòng': 1530000000, 'Quảng Ninh': 1520000000 },
+                        'Premium': { 'Hà Nội': 1800000000, 'Bắc Ninh': 1760000000, 'Hải Dương': 1750000000, 'Hải Phòng': 1740000000, 'Quảng Ninh': 1730000000 }
+                    }
+                },
+                {
+                    name: 'Lynk & Co 06',
+                    chassis: 'Monocoque (BMA Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Đa liên kết độc lập',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4340 x 1820 x 1625 mm',
+                    weight: '1465 kg',
+                    groundClearance: '168 mm',
+                    fuelTank: '51L',
+                    displacement: '1499 cc (Turbo)',
+                    colors: ['Hồng pastel', 'Xanh', 'Trắng', 'Xám'],
+                    type: 'B-segment Crossover',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    engine: '1.5L Turbo',
+                    power: '177 PS',
+                    fuel: '6.2 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: ['ABS', 'ESC', '6 airbags'],
+                    adas: ['Cruise Control', 'Parking Sensors'],
+                    variants: ['Core', 'Core Plus', 'Flagship'],
+                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
+                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' },
+                        { source: 'Lynk & Co Vietnam', url: 'https://www.lynkco.com/' }
+                    ],
+                    prices: { 'Hà Nội': 679000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
+                    variantPrices: {
+                        'Core': { 'Hà Nội': 579000000, 'Bắc Ninh': 565000000, 'Hải Dương': 560000000, 'Hải Phòng': 555000000, 'Quảng Ninh': 550000000 },
+                        'Core Plus': { 'Hà Nội': 679000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
+                        'Flagship': { 'Hà Nội': 779000000, 'Bắc Ninh': 765000000, 'Hải Dương': 760000000, 'Hải Phòng': 755000000, 'Quảng Ninh': 750000000 }
+                    }
+                }
+            ],
+
+            'BYD': [
+                {
+                    name: 'BYD Sealion 6 DM-i',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4775 x 1890 x 1670 mm',
+                    weight: '1810 kg',
+                    groundClearance: '155 mm',
+                    fuelTank: '60L + Pin 18.3 kWh',
+                    displacement: '1498 cc + Motor điện',
+                    colors: ['Trắng', 'Xám', 'Đen', 'Xanh'],
+                    type: 'Hybrid Sedan',
+                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
+                    engine: '1.5L Turbo + Hybrid',
+                    power: '160 PS EV Range',
+                    fuel: '4.5 L/100km',
+                    transmission: 'DHT',
+                    safety: ['ABS', 'ESC', '8 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Parking Assist'],
+                    variants: ['Comfort', 'Premium', 'Luxury'],
+                    amenities: ['12.8-inch touchscreen', 'Apple CarPlay', 'Leather seats'],
+                    review: 'https://www.carsguide.com.au/ev/byd-sealion-6-essential-99385',
+                    reviews: [
+                        { source: 'CarsGuide', url: 'https://www.carsguide.com.au/ev/byd-sealion-6-essential-99385' },
+                        { source: 'CleanTechnica', url: 'https://cleantechnica.com/2025/07/26/byd-sealion-06-bigger-faster-stronger-better/' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 820000000, 'Bắc Ninh': 800000000, 'Hải Dương': 795000000, 'Hải Phòng': 790000000, 'Quảng Ninh': 785000000 },
+                    variantPrices: {
+                        'Comfort': { 'Hà Nội': 720000000, 'Bắc Ninh': 700000000, 'Hải Dương': 695000000, 'Hải Phòng': 690000000, 'Quảng Ninh': 685000000 },
+                        'Premium': { 'Hà Nội': 820000000, 'Bắc Ninh': 800000000, 'Hải Dương': 795000000, 'Hải Phòng': 790000000, 'Quảng Ninh': 785000000 },
+                        'Luxury': { 'Hà Nội': 950000000, 'Bắc Ninh': 930000000, 'Hải Dương': 925000000, 'Hải Phòng': 920000000, 'Quảng Ninh': 915000000 }
+                    }
+                },
+                {
+                    name: 'BYD Yuan Plus EV',
+                    chassis: 'Monocoque (e-Platform 3.0)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4455 x 1875 x 1615 mm',
+                    weight: '1625 kg',
+                    groundClearance: '175 mm',
+                    fuelTank: 'Pin Blade LFP 60.48 kWh',
+                    displacement: 'Động cơ điện (N/A)',
+                    colors: ['Xanh lá', 'Xanh dương', 'Xám', 'Trắng', 'Đỏ'],
+                    type: 'Compact Electric SUV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    engine: 'Electric 305 km range',
+                    power: '200 PS',
+                    fuel: '0 L/100km (EV)',
+                    transmission: 'Single speed',
+                    safety: ['ABS', 'ESC', '8 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Autonomous Parking'],
+                    variants: ['Standard', 'Premium', 'Luxury'],
+                    amenities: ['12.8-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
+                    review: 'https://cleantechnica.com/',
+                    reviews: [
+                        { source: 'CleanTechnica', url: 'https://cleantechnica.com/' },
+                        { source: 'Car News China', url: 'https://carnewschina.com/' },
+                        { source: 'Electrek', url: 'https://electrek.co/2026/03/30/byds-new-ev-lures-buyers-with-5-min-charging-low-prices/' }
+                    ],
+                    prices: { 'Hà Nội': 750000000, 'Bắc Ninh': 730000000, 'Hải Dương': 725000000, 'Hải Phòng': 720000000, 'Quảng Ninh': 715000000 },
+                    variantPrices: {
+                        'Standard': { 'Hà Nội': 640000000, 'Bắc Ninh': 620000000, 'Hải Dương': 615000000, 'Hải Phòng': 610000000, 'Quảng Ninh': 605000000 },
+                        'Premium': { 'Hà Nội': 750000000, 'Bắc Ninh': 730000000, 'Hải Dương': 725000000, 'Hải Phòng': 720000000, 'Quảng Ninh': 715000000 },
+                        'Luxury': { 'Hà Nội': 880000000, 'Bắc Ninh': 860000000, 'Hải Dương': 855000000, 'Hải Phòng': 850000000, 'Quảng Ninh': 845000000 }
+                    }
+                }
+            ],
+
+            'Wuling': [
+                {
+                    name: 'Wuling Hongguang EV',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Dầm xoắn phụ thuộc',
+                    brakes: 'Trước: Đĩa, Sau: Tang trống',
+                    steering: 'Trợ lực điện',
+                    driveType: 'RWD (Cầu sau)',
+                    dimensions: '3061 x 1520 x 1659 mm',
+                    weight: '860 kg',
+                    groundClearance: '125 mm',
+                    fuelTank: 'Pin LFP 17.3 kWh / 26.5 kWh',
+                    displacement: 'Động cơ điện (N/A)',
+                    colors: ['Hồng', 'Xanh nhạt', 'Trắng', 'Vàng'],
+                    type: 'Electric MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    engine: 'Electric 400 km range',
+                    power: '150 PS',
+                    fuel: '0 L/100km (EV)',
+                    transmission: 'Single speed',
+                    safety: ['ABS', 'ESC', '6 airbags'],
+                    adas: ['Parking Sensors', 'Rear Camera'],
+                    variants: ['Standard', 'Long-range'],
+                    amenities: ['7-inch touchscreen', 'Dual sliding doors', 'USB charging'],
+                    review: 'https://carnewschina.com/',
+                    reviews: [
+                        { source: 'Car News China', url: 'https://carnewschina.com/' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
+                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 350000000, 'Bắc Ninh': 340000000, 'Hải Dương': 335000000, 'Hải Phòng': 330000000, 'Quảng Ninh': 325000000 },
+                    variantPrices: {
+                        'Standard': { 'Hà Nội': 320000000, 'Bắc Ninh': 310000000, 'Hải Dương': 305000000, 'Hải Phòng': 300000000, 'Quảng Ninh': 295000000 },
+                        'Long-range': { 'Hà Nội': 350000000, 'Bắc Ninh': 340000000, 'Hải Dương': 335000000, 'Hải Phòng': 330000000, 'Quảng Ninh': 325000000 }
+                    }
+                }
+            ],
+
+            'Skoda': [
+                {
+                    name: 'Skoda Slavia',
+                    chassis: 'Monocoque (MQB-A0-IN)',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn nửa độc lập',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4541 x 1752 x 1507 mm',
+                    weight: '1185 - 1278 kg',
+                    groundClearance: '179 mm',
+                    fuelTank: '45L',
+                    displacement: '999 cc / 1498 cc (Turbo)',
+                    colors: ['Đỏ Velvet', 'Xanh Crystal', 'Trắng Candy', 'Đen Carbon', 'Bạc Brilliant'],
+                    type: 'Compact Sedan',
+                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
+                    engine: '1.0L Turbo',
+                    power: '113 PS',
+                    fuel: '5.5 L/100km',
+                    transmission: 'MT/AT 6-speed',
+                    safety: ['ABS', 'ESC', '6 airbags'],
+                    adas: ['Parking Sensors', 'Rear Camera'],
+                    variants: ['Active', 'Ambition', 'Style'],
+                    amenities: ['7-inch touchscreen', 'Apple CarPlay', 'Alloy wheels'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/skoda/slavia/' },
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 468000000, 'Bắc Ninh': 455000000, 'Hải Dương': 450000000, 'Hải Phòng': 445000000, 'Quảng Ninh': 440000000 },
+                    variantPrices: {
+                        'Active': { 'Hà Nội': 420000000, 'Bắc Ninh': 407000000, 'Hải Dương': 402000000, 'Hải Phòng': 397000000, 'Quảng Ninh': 392000000 },
+                        'Ambition': { 'Hà Nội': 468000000, 'Bắc Ninh': 455000000, 'Hải Dương': 450000000, 'Hải Phòng': 445000000, 'Quảng Ninh': 440000000 },
+                        'Style': { 'Hà Nội': 530000000, 'Bắc Ninh': 517000000, 'Hải Dương': 512000000, 'Hải Phòng': 507000000, 'Quảng Ninh': 502000000 }
+                    }
+                },
+                {
+                    name: 'Skoda Kushaq',
+                    chassis: 'Monocoque (MQB-A0-IN)',
+                    suspension: 'Trước: MacPherson với thanh chống lật, Sau: Thanh xoắn với lò xo cuộn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4225 x 1760 x 1612 mm',
+                    weight: '1195 - 1290 kg',
+                    groundClearance: '188 mm',
+                    fuelTank: '50L',
+                    displacement: '999 cc / 1498 cc (Turbo)',
+                    colors: ['Cam Honey', 'Đỏ Velvet', 'Trắng Candy', 'Bạc Carbon'],
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    engine: '1.0L Turbo 3-cylinder',
+                    power: '115 PS',
+                    fuel: '6.0 L/100km',
+                    transmission: 'AT 6-speed',
+                    safety: ['ABS', 'ESC', '6 airbags'],
+                    adas: ['Cruise Control', 'Parking Sensors'],
+                    variants: ['Ambition', 'Style'],
+                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'KBB', url: 'https://www.kbb.com/skoda/kushaq/' },
+                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
+                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' }
+                    ],
+                    prices: { 'Hà Nội': 599000000, 'Bắc Ninh': 585000000, 'Hải Dương': 580000000, 'Hải Phòng': 575000000, 'Quảng Ninh': 570000000 },
+                    variantPrices: {
+                        'Ambition': { 'Hà Nội': 520000000, 'Bắc Ninh': 506000000, 'Hải Dương': 501000000, 'Hải Phòng': 496000000, 'Quảng Ninh': 491000000 },
+                        'Style': { 'Hà Nội': 599000000, 'Bắc Ninh': 585000000, 'Hải Dương': 580000000, 'Hải Phòng': 575000000, 'Quảng Ninh': 570000000 }
+                    }
+                }
+            ],
+
+            'Toyota': [
+                {
+                    name: 'Toyota Camry',
+                    chassis: 'Monocoque (TNGA-K platform)',
+                    suspension: 'Trước: MacPherson, Sau: Xương đòn kép',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4885 x 1840 x 1445 mm',
+                    weight: '1540 - 1635 kg',
+                    groundClearance: '140 mm',
+                    fuelTank: '60L',
+                    displacement: '1987 cc / 2487 cc / 2487 cc (Hybrid)',
+                    colors: ['Đen 218', 'Đen 222', 'Trắng ngọc trai 089', 'Đỏ 3U5'],
+                    type: '5 chỗ Sedan',
+                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
+                    engine: '2.5L Naturally Aspirated',
+                    power: '175 PS',
+                    fuel: '7.2 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: ['ABS', 'ESC', 'Toyota Safety Sense', '10 airbags'],
+                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Pre-collision System'],
+                    variants: ['Q', 'G', 'Q Special'],
+                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        { source: 'Edmunds', url: 'https://www.edmunds.com/toyota/camry/' },
+                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/toyota/camry/' },
+                        { source: 'KBB', url: 'https://www.kbb.com/toyota/camry/' }
+                    ],
+                    prices: { 'Hà Nội': 1220000000, 'Bắc Ninh': 1200000000, 'Hải Dương': 1195000000, 'Hải Phòng': 1190000000, 'Quảng Ninh': 1185000000 },
+                    variantPrices: {
+                        'Q': { 'Hà Nội': 1060000000, 'Bắc Ninh': 1040000000, 'Hải Dương': 1035000000, 'Hải Phòng': 1030000000, 'Quảng Ninh': 1025000000 },
+                        'G': { 'Hà Nội': 1220000000, 'Bắc Ninh': 1200000000, 'Hải Dương': 1195000000, 'Hải Phòng': 1190000000, 'Quảng Ninh': 1185000000 },
+                        'Q Special': { 'Hà Nội': 1360000000, 'Bắc Ninh': 1340000000, 'Hải Dương': 1335000000, 'Hải Phòng': 1330000000, 'Quảng Ninh': 1325000000 }
+                    }
+                }
+            ]
+        };
+
+        let currentCar = null;
+        let priceChart = null;
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            populateBrandDropdown();
+            displayAllCars();
+        });
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+            updateThemeButton();
+        }
+
+        function loadTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+            updateThemeButton();
+        }
+
+        function updateThemeButton() {
+            const btn = document.querySelector('.theme-toggle');
+            if (document.documentElement.classList.contains('dark-mode')) {
+                btn.textContent = '☀️ Light Mode';
+            } else {
+                btn.textContent = '🌙 Dark Mode';
+            }
+        }
+
+        function populateBrandDropdown() {
+            const brandSelect = document.getElementById('brand');
+            Object.keys(cars).forEach(brand => {
+                const option = document.createElement('option');
+                option.value = brand;
+                option.textContent = brand;
+                brandSelect.appendChild(option);
+            });
+        }
+
+        function filterCars() {
+            const selectedBrand = document.getElementById('brand').value;
+            const selectedRegion = document.getElementById('region').value;
+            const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+
+            let filteredCars = [];
+
+            if (selectedBrand) {
+                filteredCars = cars[selectedBrand] || [];
+            } else {
+                Object.values(cars).forEach(brandCars => {
+                    filteredCars = filteredCars.concat(brandCars);
+                });
+            }
+
+            // Filter by price
+            if (selectedRegion) {
+                filteredCars = filteredCars.filter(car => {
+                    const price = car.prices[selectedRegion] / 1000000;
+                    return price <= maxPrice;
+                });
+            } else {
+                filteredCars = filteredCars.filter(car => {
+                    const minPrice = Math.min(...Object.values(car.prices)) / 1000000;
+                    return minPrice <= maxPrice;
+                });
+            }
+
+            displayCars(filteredCars);
+        }
+
+        function displayAllCars() {
+            let allCars = [];
+            Object.values(cars).forEach(brandCars => {
+                allCars = allCars.concat(brandCars);
+            });
+            displayCars(allCars);
+        }
+
+        function displayCars(carList) {
+            const carListEl = document.getElementById('carList');
+            carListEl.innerHTML = '';
+
+            carList.forEach(car => {
+                const carEl = document.createElement('div');
+                carEl.className = 'car-item';
+                carEl.onclick = () => displayCarDetails(car);
+
+                const selectedRegion = document.getElementById('region').value || 'Hà Nội';
+                const price = car.prices[selectedRegion] / 1000000;
+
+                carEl.innerHTML = `
+                    <div class="car-item-name">${car.name}</div>
+                    <div class="car-item-type">${car.type}</div>
+                    <div class="car-item-price">💰 ${price.toFixed(0)} triệu (${selectedRegion})</div>
+                `;
+                carListEl.appendChild(carEl);
+            });
+        }
+
+        function displayCarDetails(car) {
+            currentCar = car;
+
+            // Price Details
+            const selectedRegion = document.getElementById('region').value || 'Hà Nội';
+            const basePrice = car.prices[selectedRegion];
+            const taxRate = selectedRegion === 'Hà Nội' ? 0.12 : 0.10;
+            const tax = basePrice * taxRate;
+            const registration = 5000000;
+            const insurance = 2000000;
+            const inspection = 1500000;
+            const maintenance = 300000;
+            const totalPrice = basePrice + tax + registration + insurance + inspection + maintenance;
+
+            const priceDetailsEl = document.getElementById('priceDetails');
+            priceDetailsEl.innerHTML = `
+                <div class="detail-section">
+                    <h4>💳 Giá Lăn Bánh Chi Tiết</h4>
+                    <div class="detail-row">
+                        <span class="detail-label">Giá Niêm Yết</span>
+                        <span class="detail-value">${(basePrice / 1000000).toFixed(1)}M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phí Trước Bạ (${(taxRate * 100).toFixed(0)}%)</span>
+                        <span class="detail-value">${(tax / 1000000).toFixed(1)}M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phí Đăng Ký Biển Số</span>
+                        <span class="detail-value">${(registration / 1000000).toFixed(1)}M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Bảo Hiểm TNDS</span>
+                        <span class="detail-value">${(insurance / 1000000).toFixed(1)}M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phí Đăng Kiểm</span>
+                        <span class="detail-value">${(inspection / 1000000).toFixed(1)}M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phí Bảo Trì Đường Bộ</span>
+                        <span class="detail-value">${(maintenance / 1000000).toFixed(1)}M</span>
+                    </div>
+                    <div class="detail-row" style="border-top: 2px solid var(--primary); padding-top: 10px; margin-top: 10px;">
+                        <span class="detail-label" style="font-size: 1.1em; font-weight: 700;">TỔNG GIÁ LĂN BÁNH</span>
+                        <span class="detail-value" style="font-size: 1.1em; font-weight: 700;">${(totalPrice / 1000000).toFixed(1)}M</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>📍 So Sánh Giá Theo Khu Vực</h4>
+                    <div class="region-price-list">
+                        ${Object.entries(car.prices).map(([region, price]) => `
+                            <div class="region-item">
+                                <span class="region-name">${region}</span>
+                                <span class="region-price">${(price / 1000000).toFixed(0)}M</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${car.variantPrices ? `
+                <div class="detail-section">
+                    <h4>💰 Giá Chi Tiết Theo Phiên Bản</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                            <thead>
+                                <tr style="background: var(--light); border-bottom: 2px solid var(--border);">
+                                    <th style="padding: 8px; text-align: left; font-weight: 600;">Phiên Bản</th>
+                                    ${Object.keys(car.prices).map(region => `<th style="padding: 8px; text-align: right; font-weight: 600;">${region}</th>`).join('')}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${car.variants.map(variant => `
+                                    <tr style="border-bottom: 1px solid var(--border);">
+                                        <td style="padding: 8px; font-weight: 500; color: var(--primary);">${variant}</td>
+                                        ${Object.keys(car.prices).map(region => {
+                                            const price = car.variantPrices[variant] && car.variantPrices[variant][region]
+                                                ? (car.variantPrices[variant][region] / 1000000).toFixed(0)
+                                                : '—';
+                                            return `<td style="padding: 8px; text-align: right; color: var(--text);">${price}M</td>`;
+                                        }).join('')}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                ` : ''}
+            `;
+
+            // Specs Details
+            const specsDetailsEl = document.getElementById('specsDetails');
+            specsDetailsEl.innerHTML = `
+                <div class="detail-section">
+                    <h4>⚙️ Thông Số Động Cơ & Hiệu Suất</h4>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">🔧 Động Cơ</div>
+                            <div class="spec-value">${car.engine}</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">⚡ Công Suất</div>
+                            <div class="spec-value">${car.power}</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">⛽ Tiêu Hao</div>
+                            <div class="spec-value">${car.fuel}</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">🔄 Hộp Số</div>
+                            <div class="spec-value">${car.transmission}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>🚗 Thông Số Khung Gầm & Hệ Thống Treo</h4>
+                    <div style="font-size: 0.9em; line-height: 1.8;">
+                        <div style="margin-bottom: 10px;"><strong>📐 Khung Gầm:</strong> ${car.chassis || 'Monocoque unibody'}</div>
+                        <div style="margin-bottom: 10px;"><strong>🎯 Hệ Thống Treo:</strong> ${car.suspension || 'Front: MacPherson strut, Rear: Multi-link'}</div>
+                        <div style="margin-bottom: 10px;"><strong>🎛️ Vô Lăng:</strong> ${car.steering || 'Electric power steering'}</div>
+                        <div style="margin-bottom: 10px;"><strong>🛑 Phanh:</strong> ${car.brakes || 'Front: Ventilated disc, Rear: Disc'}</div>
+                        <div style="margin-bottom: 10px;"><strong>🚘 Cầu:</strong> ${car.driveType || 'Front-wheel drive'}</div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>📏 Kích Thước & Trọng Lượng</h4>
+                    <div style="font-size: 0.9em; line-height: 1.8;">
+                        <div style="margin-bottom: 10px;"><strong>Kích Thước:</strong> ${car.dimensions || 'Liên hệ đại lý'}</div>
+                        <div style="margin-bottom: 10px;"><strong>⚖️ Trọng Lượng:</strong> ${car.weight || 'Tuỳ phiên bản'}</div>
+                        <div style="margin-bottom: 10px;"><strong>🛣️ Khoảng Sáng Gầm:</strong> ${car.groundClearance || 'Tuỳ phiên bản'}</div>
+                        <div style="margin-bottom: 10px;"><strong>⛽ Dung Tích Bình Xăng:</strong> ${car.fuelTank || 'Tuỳ phiên bản'}</div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>🔒 Tính Năng An Toàn</h4>
+                    <div style="margin-bottom: 10px;">
+                        ${car.safety.map(item => `<span class="safety-badge">${item}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>🤖 Tính Năng ADAS</h4>
+                    <div style="margin-bottom: 10px;">
+                        ${car.adas.map(item => `<span class="adas-badge">${item}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>📦 Các Phiên Bản</h4>
+                    <div style="font-size: 0.9em;">
+                        ${car.variants.join(', ')}
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>🎁 Tiện Nghi</h4>
+                    <div style="font-size: 0.9em;">
+                        ${car.amenities.join(', ')}
+                    </div>
+                </div>
+
+                ${car.colors ? `
+                <div class="detail-section">
+                    <h4>🎨 Màu Sắc Ngoại Thất</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        ${car.colors.map(color => `<span class="safety-badge" style="background: var(--light); border: 1px solid var(--border); color: var(--text);">${color}</span>`).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                <div class="detail-section">
+                    <h4>📺 Review & Tài Liệu Tham Khảo</h4>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        ${car.review ? `<a href="${car.review}" target="_blank" class="review-link">🎬 Xem video review</a>` : ''}
+                        ${car.reviews ? car.reviews.map(r => `<a href="${r.url}" target="_blank" class="review-link">📖 ${r.source}</a>`).join('') : ''}
+                    </div>
+                </div>
+            `;
+
+            // Update chart
+            updatePriceChart();
+        }
+
+        function updatePriceChart() {
+            if (!currentCar) return;
+
+            const ctx = document.getElementById('priceChart');
+            if (!ctx) return;
+
+            const regions = Object.keys(currentCar.prices);
+            const prices = regions.map(r => currentCar.prices[r] / 1000000);
+
+            if (priceChart) {
+                priceChart.destroy();
+            }
+
+            priceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: regions,
+                    datasets: [{
+                        label: 'Giá Niêm Yết (triệu VND)',
+                        data: prices,
+                        backgroundColor: [
+                            'rgba(37, 99, 235, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(139, 92, 246, 0.8)'
+                        ],
+                        borderColor: [
+                            '#2563eb',
+                            '#f59e0b',
+                            '#10b981',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: document.documentElement.classList.contains('dark-mode') ? '#f1f5f9' : '#1f2937'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: document.documentElement.classList.contains('dark-mode') ? '#f1f5f9' : '#1f2937'
+                            },
+                            grid: {
+                                color: document.documentElement.classList.contains('dark-mode') ? '#334155' : '#e5e7eb'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: document.documentElement.classList.contains('dark-mode') ? '#f1f5f9' : '#1f2937'
+                            },
+                            grid: {
+                                color: document.documentElement.classList.contains('dark-mode') ? '#334155' : '#e5e7eb'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updatePrices() {
+            alert('🔄 Đang cập nhật giá từ internet...\n\nNhấn "Cập Nhật Giá" trong dashboard sau khi API server chạy:\npython crawler_xe_oto.py api');
+        }
+    </script>
+</body>
+</html>

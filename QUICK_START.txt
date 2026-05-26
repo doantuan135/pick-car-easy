@@ -1,0 +1,144 @@
+═══════════════════════════════════════════════════════════════
+  🚗 QUICK START - BẮT ĐẦU NHANH TRỌ XE Ô TÔ
+═══════════════════════════════════════════════════════════════
+
+📁 TẬP TIN CẦN:
+├── dashboard-xe-auto.html      ← MỞ CÁI NÀY (Nhấp đúp trong trình duyệt)
+├── crawler_xe_oto.py           ← Script Python crawl giá
+├── setup.bat                    ← Chạy cái này trước (Windows)
+├── requirements.txt            ← Danh sách thư viện
+└── HUONG_DAN_SU_DUNG.md       ← Hướng dẫn chi tiết
+
+═══════════════════════════════════════════════════════════════
+🚀 CÁCH 1: WINDOWS (TỰ ĐỘNG - 30 GIÂY)
+═══════════════════════════════════════════════════════════════
+
+1️⃣  Nhấp đúp vào: setup.bat
+    ✅ Sẽ tự động cài Python & thư viện
+
+2️⃣  Mở: dashboard-xe-auto.html
+    ✅ Dashboard sẽ hiển thị trong trình duyệt
+
+3️⃣  Sử dụng:
+    - Chọn hãng xe (Honda, Hyundai, Kia, Mazda, Mitsubishi, Suzuki)
+    - Chọn khu vực (Hà Nội, Bắc Ninh, Hải Dương, Hải Phòng, Quảng Ninh)
+    - Kéo slider giá
+    - Nhấp vào xe để xem chi tiết
+    - Nhấn "🔄 Cập Nhật Giá" để tải giá mới
+
+═══════════════════════════════════════════════════════════════
+🐍 CÁCH 2: NÂNG CAO - CRAWL GIÁ REALTIME
+═══════════════════════════════════════════════════════════════
+
+BƯỚC 1: Mở Command Prompt (Windows) hoặc Terminal (Mac/Linux)
+        ✅ Windows: Nhấn Win+R, gõ "cmd", Enter
+        ✅ Mac: Mở Finder → Applications → Utilities → Terminal
+        ✅ Linux: Mở Terminal
+
+BƯỚC 2: Chuyển đến thư mục script
+        C:\> cd "C:\Users\<YourName>\OneDrive\Documents\Claude\Projects\Tìm mua xe ô tô"
+
+BƯỚC 3: Chọn 1 trong 3 cách:
+
+   OPTION A - Crawl 1 lần:
+   $ python crawler_xe_oto.py crawl
+   → Sẽ lấy giá từ website & lưu vào car_prices.json
+   → Tổn thời gian: ~30 giây
+
+   OPTION B - Khởi động API Server (Tốt nhất):
+   $ python crawler_xe_oto.py api
+   → Mở cửa sổ dashboard, nhấn "🔄 Cập Nhật Giá"
+   → Dashboard sẽ kết nối & tải giá realtime từ API
+   → Tổn thời gian: tuỳ ý
+
+   OPTION C - Xem dữ liệu đã lưu:
+   $ python crawler_xe_oto.py load
+   → Hiển thị giá từ file car_prices.json
+
+═══════════════════════════════════════════════════════════════
+💡 MẸO NHANH
+═══════════════════════════════════════════════════════════════
+
+🎯 MUỐN CÓ GIÁ REALTIME?
+   1. Mở Command Prompt
+   2. Gõ: python crawler_xe_oto.py api
+   3. Để chạy (đừng đóng cửa sổ)
+   4. Mở dashboard, nhấn "🔄 Cập Nhật Giá"
+
+🎯 GIÁ KHÔNG CẬP NHẬT?
+   1. Đóng Command Prompt (Ctrl+C)
+   2. Chạy lại: python crawler_xe_oto.py api
+   3. Thử lại trong dashboard
+
+🎯 MUỐN CHẠY HÀNG NGÀY TỰ ĐỘNG?
+   1. Windows: Mở Task Scheduler
+   2. Tạo task chạy: python crawler_xe_oto.py crawl
+   3. Đặt thời gian: 6:00 AM hàng ngày
+
+═══════════════════════════════════════════════════════════════
+📊 DASHBOARD CÓ GÌ?
+═══════════════════════════════════════════════════════════════
+
+✅ 6 MẪU XE:
+   • Honda CR-V (5 chỗ)
+   • Hyundai Santa Fe (7 chỗ, Hybrid)
+   • Kia Sorento (7 chỗ)
+   • Mazda CX-5 (5 chỗ, Skyactiv)
+   • Mitsubishi Outlander (7 chỗ)
+   • Suzuki Ertiga (7 chỗ)
+
+✅ 5 KHU VỰC:
+   • Hà Nội (phí trước bạ: 12%)
+   • Bắc Ninh (phí trước bạ: 10%)
+   • Hải Dương (phí trước bạ: 10%)
+   • Hải Phòng (phí trước bạ: 10%)
+   • Quảng Ninh (phí trước bạ: 10%)
+
+✅ CHI TIẾT GIÁ LĂN BÁNH:
+   💰 Giá niêm yết
+   📋 Phí trước bạ (%)
+   🏷️ Phí đăng ký
+   🔍 Phí kiểm định
+   🛡️ Bảo hiểm TNDS
+   🚙 Phí bảo trì đường bộ
+   ━━━━━━━━━━━━━━
+   ✓ TỔNG GIÁ LĂN BÁNH
+
+✅ THÔNG TIN KHÁC:
+   • Mạng lưới đại lý & SĐT
+   • Lịch sử hãng xe
+   • Thông số kỹ thuật (động cơ, công suất, etc.)
+   • Biểu đồ so sánh giá giữa khu vực
+
+═══════════════════════════════════════════════════════════════
+❓ FAQ NHANH
+═══════════════════════════════════════════════════════════════
+
+Q: Giá có chính xác không?
+A: ✅ Có! Dữ liệu crawl từ bonbanh.com & oto.com.vn (website uy tín)
+
+Q: Tôi cần kết nối internet không?
+A: ✅ Có, nhất là khi crawl dữ liệu. Dashboard sau khi mở có thể offline.
+
+Q: Có phí không?
+A: ❌ Không, hoàn toàn miễn phí!
+
+Q: Tôi có thể thêm xe khác không?
+A: ✅ Được! Mở crawler_xe_oto.py, sửa dict CARS
+
+Q: Tôi có thể chạy trên Mac/Linux không?
+A: ✅ Được! Chỉ thay python thành python3
+
+═══════════════════════════════════════════════════════════════
+📖 MUỐN BIẾT THÊM CHI TIẾT?
+═══════════════════════════════════════════════════════════════
+
+👉 Mở file: HUONG_DAN_SU_DUNG.md (đọc tiếng Việt)
+👉 Hoặc:    README.md (tiếng Anh + ký hiệu)
+
+═══════════════════════════════════════════════════════════════
+✨ CHÚC BẠN TÌM ĐƯỢC CHIẾC XE Ý THÍCH!
+═══════════════════════════════════════════════════════════════
+
+📧 Email hỗ trợ: tuanvnaction@gmail.com
+📝 Cập nhật: Tháng 5/2026
