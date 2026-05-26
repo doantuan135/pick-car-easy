@@ -457,12 +457,13 @@
     <script>
         // All car brands and models database
         const cars = {
-            // Japanese Brands
-            'Honda': [
+            Honda: [
                 {
                     name: 'Honda CR-V',
                     seats: 5,
                     engineType: 'HEV / Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
                     chassis: 'Monocoque unibody',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -473,36 +474,105 @@
                     groundClearance: '198 mm',
                     fuelTank: '57L (Xăng) / 40L (Hybrid)',
                     displacement: '1498 cc (Turbo) / 1993 cc (Hybrid)',
-                    colors: ['Trắng ngọc', 'Đen ánh', 'Xám', 'Đỏ', 'Xanh'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng ngọc',
+                        'Đen ánh',
+                        'Xám',
+                        'Đỏ',
+                        'Xanh'
+                    ],
                     engine: '1.5L Turbo/Hybrid',
                     power: '184-204 PS',
                     fuel: '6.2-7.5 L/100km',
                     transmission: 'CVT/AT',
-                    safety: ['ABS', 'ESP', 'VSA', 'Collision Mitigation', 'Lane Keeping'],
-                    adas: ['Adaptive Cruise Control', 'Lane Departure Warning', 'Road Sign Recognition', 'Blind Spot Monitor'],
-                    variants: ['G', 'L', 'L AWD', 'e:HEV L', 'e:HEV RS'],
-                    amenities: ['8-inch touchscreen', 'Apple CarPlay/Android Auto', 'Power sunroof', '6 airbags'],
+                    safety: [
+                        'ABS',
+                        'ESP',
+                        'VSA',
+                        'Collision Mitigation',
+                        'Lane Keeping'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Departure Warning',
+                        'Road Sign Recognition',
+                        'Blind Spot Monitor'
+                    ],
+                    variants: [
+                        'G',
+                        'L',
+                        'L AWD',
+                        'e:HEV L',
+                        'e:HEV RS'
+                    ],
+                    amenities: [
+                        '8-inch touchscreen',
+                        'Apple CarPlay/Android Auto',
+                        'Power sunroof',
+                        '6 airbags'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'Edmunds Review', url: 'https://www.edmunds.com/car-news/2026-honda-cr-v-full-rating-review.html' },
-                        { source: 'Kelley Blue Book', url: 'https://www.kbb.com/honda/cr-v-hybrid/' },
-                        { source: 'Honda Specs', url: 'https://automobiles.honda.com/cr-v/specs-features-trim-comparison' }
+                        {
+                            source: 'Edmunds Review',
+                            url: 'https://www.edmunds.com/car-news/2026-honda-cr-v-full-rating-review.html'
+                        },
+                        {
+                            source: 'Kelley Blue Book',
+                            url: 'https://www.kbb.com/honda/cr-v-hybrid/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 1165000000, 'Bắc Ninh': 1155000000, 'Hải Dương': 1150000000, 'Hải Phòng': 1145000000, 'Quảng Ninh': 1140000000 },
+                    prices: {
+                        'Hà Nội': 1165000000,
+                        'Bắc Ninh': 1155000000,
+                        'Hải Dương': 1150000000,
+                        'Hải Phòng': 1145000000,
+                        'Quảng Ninh': 1140000000
+                    },
                     variantPrices: {
-                        'G': { 'Hà Nội': 1015000000, 'Bắc Ninh': 1005000000, 'Hải Dương': 1000000000, 'Hải Phòng': 995000000, 'Quảng Ninh': 990000000 },
-                        'L': { 'Hà Nội': 1135000000, 'Bắc Ninh': 1125000000, 'Hải Dương': 1120000000, 'Hải Phòng': 1115000000, 'Quảng Ninh': 1110000000 },
-                        'L AWD': { 'Hà Nội': 1265000000, 'Bắc Ninh': 1255000000, 'Hải Dương': 1250000000, 'Hải Phòng': 1245000000, 'Quảng Ninh': 1240000000 },
-                        'e:HEV L': { 'Hà Nội': 1280000000, 'Bắc Ninh': 1270000000, 'Hải Dương': 1265000000, 'Hải Phòng': 1260000000, 'Quảng Ninh': 1255000000 },
-                        'e:HEV RS': { 'Hà Nội': 1380000000, 'Bắc Ninh': 1370000000, 'Hải Dương': 1365000000, 'Hải Phòng': 1360000000, 'Quảng Ninh': 1355000000 }
+                        G: {
+                            'Hà Nội': 1015000000,
+                            'Bắc Ninh': 1005000000,
+                            'Hải Dương': 1000000000,
+                            'Hải Phòng': 995000000,
+                            'Quảng Ninh': 990000000
+                        },
+                        L: {
+                            'Hà Nội': 1135000000,
+                            'Bắc Ninh': 1125000000,
+                            'Hải Dương': 1120000000,
+                            'Hải Phòng': 1115000000,
+                            'Quảng Ninh': 1110000000
+                        },
+                        'L AWD': {
+                            'Hà Nội': 1265000000,
+                            'Bắc Ninh': 1255000000,
+                            'Hải Dương': 1250000000,
+                            'Hải Phòng': 1245000000,
+                            'Quảng Ninh': 1240000000
+                        },
+                        'e:HEV L': {
+                            'Hà Nội': 1280000000,
+                            'Bắc Ninh': 1270000000,
+                            'Hải Dương': 1265000000,
+                            'Hải Phòng': 1260000000,
+                            'Quảng Ninh': 1255000000
+                        },
+                        'e:HEV RS': {
+                            'Hà Nội': 1380000000,
+                            'Bắc Ninh': 1370000000,
+                            'Hải Dương': 1365000000,
+                            'Hải Phòng': 1360000000,
+                            'Quảng Ninh': 1355000000
+                        }
                     }
                 },
                 {
                     name: 'Honda Civic',
                     seats: 5,
                     engineType: 'Xăng',
+                    type: '5 chỗ Sedan',
+                    image: 'https://images.unsplash.com/photo-1590362891033-56d7764a54a8?w=400&h=300&fit=crop',
                     chassis: 'Monocoque unibody',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -513,37 +583,248 @@
                     groundClearance: '134 mm',
                     fuelTank: '47L',
                     displacement: '1498 cc',
-                    colors: ['Trắng ngọc', 'Đen', 'Xám', 'Đỏ', 'Xanh'],
-                    type: '4 chỗ Sedan',
-                    image: 'https://images.unsplash.com/photo-1590362891033-56d7764a54a8?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng ngọc',
+                        'Đen',
+                        'Xám',
+                        'Đỏ',
+                        'Xanh'
+                    ],
                     engine: '1.5L Turbo',
                     power: '180 PS',
                     fuel: '6.5 L/100km',
                     transmission: 'CVT',
-                    safety: ['ABS', 'ESP', 'VSA', 'Collision Mitigation'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping'],
-                    variants: ['G', 'E', 'RS'],
-                    amenities: ['7-inch touchscreen', 'Apple CarPlay', 'Power windows', '6 airbags'],
+                    safety: [
+                        'ABS',
+                        'ESP',
+                        'VSA',
+                        'Collision Mitigation'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping'
+                    ],
+                    variants: [
+                        'G',
+                        'E',
+                        'RS'
+                    ],
+                    amenities: [
+                        '7-inch touchscreen',
+                        'Apple CarPlay',
+                        'Power windows',
+                        '6 airbags'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/honda/civic/' },
-                        { source: 'KBB', url: 'https://www.kbb.com/honda/civic/' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/honda/civic/' }
+                        {
+                            source: 'Edmunds',
+                            url: 'https://www.edmunds.com/honda/civic/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 750000000, 'Bắc Ninh': 735000000, 'Hải Dương': 730000000, 'Hải Phòng': 725000000, 'Quảng Ninh': 720000000 },
+                    prices: {
+                        'Hà Nội': 750000000,
+                        'Bắc Ninh': 735000000,
+                        'Hải Dương': 730000000,
+                        'Hải Phòng': 725000000,
+                        'Quảng Ninh': 720000000
+                    },
                     variantPrices: {
-                        'G': { 'Hà Nội': 650000000, 'Bắc Ninh': 635000000, 'Hải Dương': 630000000, 'Hải Phòng': 625000000, 'Quảng Ninh': 620000000 },
-                        'E': { 'Hà Nội': 720000000, 'Bắc Ninh': 705000000, 'Hải Dương': 700000000, 'Hải Phòng': 695000000, 'Quảng Ninh': 690000000 },
-                        'RS': { 'Hà Nội': 800000000, 'Bắc Ninh': 785000000, 'Hải Dương': 780000000, 'Hải Phòng': 775000000, 'Quảng Ninh': 770000000 }
+                        G: {
+                            'Hà Nội': 650000000,
+                            'Bắc Ninh': 635000000,
+                            'Hải Dương': 630000000,
+                            'Hải Phòng': 625000000,
+                            'Quảng Ninh': 620000000
+                        },
+                        E: {
+                            'Hà Nội': 720000000,
+                            'Bắc Ninh': 705000000,
+                            'Hải Dương': 700000000,
+                            'Hải Phòng': 695000000,
+                            'Quảng Ninh': 690000000
+                        },
+                        RS: {
+                            'Hà Nội': 800000000,
+                            'Bắc Ninh': 785000000,
+                            'Hải Dương': 780000000,
+                            'Hải Phòng': 775000000,
+                            'Quảng Ninh': 770000000
+                        }
+                    }
+                },
+                {
+                    name: 'Honda HR-V',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque unibody',
+                    suspension: 'Trước: MacPherson, Sau: Giằng xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4385 x 1790 x 1590 mm',
+                    weight: '1260 - 1360 kg',
+                    groundClearance: '181 mm',
+                    fuelTank: '50L',
+                    displacement: '1498 cc',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Xám'
+                    ],
+                    engine: '1.5L Turbo / NA',
+                    power: '119 - 174 PS',
+                    fuel: '5.8 - 6.5 L/100km',
+                    transmission: 'CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'BA',
+                        'HSA',
+                        'VSA'
+                    ],
+                    adas: [
+                        'Honda Sensing',
+                        'Adaptive Cruise Control',
+                        'Lane Keeping Assist'
+                    ],
+                    variants: [
+                        'G',
+                        'L',
+                        'RS'
+                    ],
+                    amenities: [
+                        '8-inch screen',
+                        'Apple CarPlay/Android Auto',
+                        'Dual climate control'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Honda HR-V Specs',
+                            url: 'https://www.honda.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 826000000,
+                        'Bắc Ninh': 815000000,
+                        'Hải Dương': 810000000,
+                        'Hải Phòng': 805000000,
+                        'Quảng Ninh': 800000000
+                    },
+                    variantPrices: {
+                        G: {
+                            'Hà Nội': 699000000,
+                            'Bắc Ninh': 689000000,
+                            'Hải Dương': 684000000,
+                            'Hải Phòng': 679000000,
+                            'Quảng Ninh': 674000000
+                        },
+                        L: {
+                            'Hà Nội': 826000000,
+                            'Bắc Ninh': 816000000,
+                            'Hải Dương': 811000000,
+                            'Hải Phòng': 806000000,
+                            'Quảng Ninh': 801000000
+                        },
+                        RS: {
+                            'Hà Nội': 871000000,
+                            'Bắc Ninh': 861000000,
+                            'Hải Dương': 856000000,
+                            'Hải Phòng': 851000000,
+                            'Quảng Ninh': 846000000
+                        }
+                    }
+                },
+                {
+                    name: 'Honda BR-V',
+                    seats: 7,
+                    engineType: 'Xăng',
+                    type: '7 chỗ MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Giằng xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4490 x 1780 x 1685 mm',
+                    weight: '1280 kg',
+                    groundClearance: '207 mm',
+                    fuelTank: '42L',
+                    displacement: '1498 cc',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Bạc'
+                    ],
+                    engine: '1.5L i-VTEC',
+                    power: '119 PS',
+                    fuel: '6.4 L/100km',
+                    transmission: 'CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'BA',
+                        'VSA',
+                        'HSA'
+                    ],
+                    adas: [
+                        'Honda Sensing',
+                        'Collision Mitigation',
+                        'Adaptive Cruise Control'
+                    ],
+                    variants: [
+                        'G',
+                        'L'
+                    ],
+                    amenities: [
+                        '7-inch screen',
+                        'Apple CarPlay',
+                        'Leather seats (L)'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Honda BR-V Specs',
+                            url: 'https://www.honda.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 680000000,
+                        'Bắc Ninh': 670000000,
+                        'Hải Dương': 665000000,
+                        'Hải Phòng': 660000000,
+                        'Quảng Ninh': 655000000
+                    },
+                    variantPrices: {
+                        G: {
+                            'Hà Nội': 661000000,
+                            'Bắc Ninh': 651000000,
+                            'Hải Dương': 646000000,
+                            'Hải Phòng': 641000000,
+                            'Quảng Ninh': 636000000
+                        },
+                        L: {
+                            'Hà Nội': 705000000,
+                            'Bắc Ninh': 695000000,
+                            'Hải Dương': 690000000,
+                            'Hải Phòng': 685000000,
+                            'Quảng Ninh': 680000000
+                        }
                     }
                 }
             ],
-
-            'Hyundai': [
+            Hyundai: [
                 {
                     name: 'Hyundai Santa Fe',
                     seats: 7,
                     engineType: 'HEV / Xăng / Dầu',
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
                     chassis: 'Monocoque (N3 Platform)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -554,34 +835,87 @@
                     groundClearance: '177 mm',
                     fuelTank: '67L',
                     displacement: '2497 cc / 1598 cc (Hybrid)',
-                    colors: ['Trắng', 'Đen', 'Đỏ', 'Vàng cát', 'Xanh dương'],
-                    type: '7 chỗ SUV Hybrid',
-                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Vàng cát',
+                        'Xanh dương'
+                    ],
                     engine: '2.5L Turbo + Hybrid',
                     power: '226 PS',
                     fuel: '7.5 L/100km',
                     transmission: 'AT 8-speed',
-                    safety: ['ABS', 'ESC', 'Collision Warning', '6 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Alert'],
-                    variants: ['Standard', 'Comfort', 'Exclusive'],
-                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof', 'Leather seats'],
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'Collision Warning',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Blind Spot Alert'
+                    ],
+                    variants: [
+                        'Standard',
+                        'Comfort',
+                        'Exclusive'
+                    ],
+                    amenities: [
+                        '10.25-inch touchscreen',
+                        'Apple CarPlay',
+                        'Panoramic sunroof',
+                        'Leather seats'
+                    ],
                     review: 'https://www.youtube.com/watch?v=WtVeYboFhc8',
                     reviews: [
-                        { source: 'YouTube (Honest Review 2026)', url: 'https://www.youtube.com/watch?v=WtVeYboFhc8' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/suvs/honda-cr-v-vs-hyundai-santa-fe-two-row-suv-review-a9311891048/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/hyundai/santa-fe/' }
+                        {
+                            source: 'YouTube (Honest Review 2026)',
+                            url: 'https://www.youtube.com/watch?v=WtVeYboFhc8'
+                        },
+                        {
+                            source: 'Edmunds',
+                            url: 'https://www.edmunds.com/hyundai/santa-fe/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 1368000000, 'Bắc Ninh': 1350000000, 'Hải Dương': 1345000000, 'Hải Phòng': 1340000000, 'Quảng Ninh': 1335000000 },
+                    prices: {
+                        'Hà Nội': 1368000000,
+                        'Bắc Ninh': 1350000000,
+                        'Hải Dương': 1345000000,
+                        'Hải Phòng': 1340000000,
+                        'Quảng Ninh': 1335000000
+                    },
                     variantPrices: {
-                        'Standard': { 'Hà Nội': 1240000000, 'Bắc Ninh': 1220000000, 'Hải Dương': 1215000000, 'Hải Phòng': 1210000000, 'Quảng Ninh': 1205000000 },
-                        'Comfort': { 'Hà Nội': 1350000000, 'Bắc Ninh': 1330000000, 'Hải Dương': 1325000000, 'Hải Phòng': 1320000000, 'Quảng Ninh': 1315000000 },
-                        'Exclusive': { 'Hà Nội': 1480000000, 'Bắc Ninh': 1460000000, 'Hải Dương': 1455000000, 'Hải Phòng': 1450000000, 'Quảng Ninh': 1445000000 }
+                        Standard: {
+                            'Hà Nội': 1240000000,
+                            'Bắc Ninh': 1220000000,
+                            'Hải Dương': 1215000000,
+                            'Hải Phòng': 1210000000,
+                            'Quảng Ninh': 1205000000
+                        },
+                        Comfort: {
+                            'Hà Nội': 1350000000,
+                            'Bắc Ninh': 1330000000,
+                            'Hải Dương': 1325000000,
+                            'Hải Phòng': 1320000000,
+                            'Quảng Ninh': 1315000000
+                        },
+                        Exclusive: {
+                            'Hà Nội': 1480000000,
+                            'Bắc Ninh': 1460000000,
+                            'Hải Dương': 1455000000,
+                            'Hải Phòng': 1450000000,
+                            'Quảng Ninh': 1445000000
+                        }
                     }
                 },
                 {
                     name: 'Hyundai Tucson',
                     seats: 5,
                     engineType: 'Xăng / Dầu',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
                     chassis: 'Monocoque (N3 Platform)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -592,37 +926,253 @@
                     groundClearance: '181 mm',
                     fuelTank: '54L',
                     displacement: '1999 cc (Xăng) / 1598 cc (Turbo) / 1998 cc (Dầu)',
-                    colors: ['Trắng', 'Đen', 'Đỏ', 'Vàng cát', 'Xám'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Vàng cát',
+                        'Xám'
+                    ],
                     engine: '1.6L Turbo',
                     power: '177 PS',
                     fuel: '6.8 L/100km',
                     transmission: 'AT 7-speed',
-                    safety: ['ABS', 'ESC', '6 airbags'],
-                    adas: ['Cruise Control', 'Lane Keeping'],
-                    variants: ['Base', 'Comfort', 'Premium'],
-                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Sunroof'],
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Cruise Control',
+                        'Lane Keeping'
+                    ],
+                    variants: [
+                        'Base',
+                        'Comfort',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Sunroof'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/hyundai/tucson/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/hyundai/tucson/' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/hyundai/tucson/' }
+                        {
+                            source: 'KBB',
+                            url: 'https://www.kbb.com/hyundai/tucson/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 850000000, 'Bắc Ninh': 835000000, 'Hải Dương': 830000000, 'Hải Phòng': 825000000, 'Quảng Ninh': 820000000 },
+                    prices: {
+                        'Hà Nội': 850000000,
+                        'Bắc Ninh': 835000000,
+                        'Hải Dương': 830000000,
+                        'Hải Phòng': 825000000,
+                        'Quảng Ninh': 820000000
+                    },
                     variantPrices: {
-                        'Base': { 'Hà Nội': 750000000, 'Bắc Ninh': 735000000, 'Hải Dương': 730000000, 'Hải Phòng': 725000000, 'Quảng Ninh': 720000000 },
-                        'Comfort': { 'Hà Nội': 850000000, 'Bắc Ninh': 835000000, 'Hải Dương': 830000000, 'Hải Phòng': 825000000, 'Quảng Ninh': 820000000 },
-                        'Premium': { 'Hà Nội': 950000000, 'Bắc Ninh': 935000000, 'Hải Dương': 930000000, 'Hải Phòng': 925000000, 'Quảng Ninh': 920000000 }
+                        Base: {
+                            'Hà Nội': 750000000,
+                            'Bắc Ninh': 735000000,
+                            'Hải Dương': 730000000,
+                            'Hải Phòng': 725000000,
+                            'Quảng Ninh': 720000000
+                        },
+                        Comfort: {
+                            'Hà Nội': 850000000,
+                            'Bắc Ninh': 835000000,
+                            'Hải Dương': 830000000,
+                            'Hải Phòng': 825000000,
+                            'Quảng Ninh': 820000000
+                        },
+                        Premium: {
+                            'Hà Nội': 950000000,
+                            'Bắc Ninh': 935000000,
+                            'Hải Dương': 930000000,
+                            'Hải Phòng': 925000000,
+                            'Quảng Ninh': 920000000
+                        }
+                    }
+                },
+                {
+                    name: 'Hyundai Creta',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện (MDPS)',
+                    driveType: 'FWD',
+                    dimensions: '4315 x 1790 x 1660 mm',
+                    weight: '1150 kg',
+                    groundClearance: '200 mm',
+                    fuelTank: '40L',
+                    displacement: '1497 cc',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Xanh'
+                    ],
+                    engine: '1.5L Smartstream',
+                    power: '115 PS',
+                    fuel: '6.1 L/100km',
+                    transmission: 'iCVT',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'VSA',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Hyundai SmartSense',
+                        'Lane Keeping Assist',
+                        'Blind Spot Collision-Avoidance'
+                    ],
+                    variants: [
+                        'Tiêu chuẩn',
+                        'Đặc biệt',
+                        'Cao cấp'
+                    ],
+                    amenities: [
+                        '10.25-inch screen',
+                        'Bose 8-speakers',
+                        'Cooling seats (Premium)'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Hyundai Vietnam',
+                            url: 'https://www.hyundai-thanhcong.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 699000000,
+                        'Bắc Ninh': 689000000,
+                        'Hải Dương': 684000000,
+                        'Hải Phòng': 679000000,
+                        'Quảng Ninh': 674000000
+                    },
+                    variantPrices: {
+                        'Tiêu chuẩn': {
+                            'Hà Nội': 599000000,
+                            'Bắc Ninh': 589000000,
+                            'Hải Dương': 584000000,
+                            'Hải Phòng': 579000000,
+                            'Quảng Ninh': 574000000
+                        },
+                        'Đặc biệt': {
+                            'Hà Nội': 650000000,
+                            'Bắc Ninh': 640000000,
+                            'Hải Dương': 635000000,
+                            'Hải Phòng': 630000000,
+                            'Quảng Ninh': 625000000
+                        },
+                        'Cao cấp': {
+                            'Hà Nội': 699000000,
+                            'Bắc Ninh': 689000000,
+                            'Hải Dương': 684000000,
+                            'Hải Phòng': 679000000,
+                            'Quảng Ninh': 674000000
+                        }
+                    }
+                },
+                {
+                    name: 'Hyundai Custin',
+                    seats: 7,
+                    engineType: 'Xăng',
+                    type: '7 chỗ MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4950 x 1850 x 1725 mm',
+                    weight: '1690 - 1795 kg',
+                    groundClearance: '170 mm',
+                    fuelTank: '58L',
+                    displacement: '1497 cc / 1975 cc (Turbo)',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Bạc',
+                        'Xám'
+                    ],
+                    engine: '1.5L / 2.0L Turbo',
+                    power: '170 - 236 PS',
+                    fuel: '6.9 - 8.2 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Hyundai SmartSense',
+                        'Smart Cruise Control',
+                        'Lane Follow Assist'
+                    ],
+                    variants: [
+                        '1.5T Tiêu chuẩn',
+                        '1.5T Đặc biệt',
+                        '2.0T Cao cấp'
+                    ],
+                    amenities: [
+                        'Captain seats with heater',
+                        '10.4-inch screen',
+                        'Dual sunroof'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Hyundai Custin Info',
+                            url: 'https://www.hyundai-thanhcong.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 850000000,
+                        'Bắc Ninh': 840000000,
+                        'Hải Dương': 835000000,
+                        'Hải Phòng': 830000000,
+                        'Quảng Ninh': 825000000
+                    },
+                    variantPrices: {
+                        '1.5T Tiêu chuẩn': {
+                            'Hà Nội': 850000000,
+                            'Bắc Ninh': 840000000,
+                            'Hải Dương': 835000000,
+                            'Hải Phòng': 830000000,
+                            'Quảng Ninh': 825000000
+                        },
+                        '1.5T Đặc biệt': {
+                            'Hà Nội': 945000000,
+                            'Bắc Ninh': 935000000,
+                            'Hải Dương': 930000000,
+                            'Hải Phòng': 925000000,
+                            'Quảng Ninh': 920000000
+                        },
+                        '2.0T Cao cấp': {
+                            'Hà Nội': 999000000,
+                            'Bắc Ninh': 989000000,
+                            'Hải Dương': 984000000,
+                            'Hải Phòng': 979000000,
+                            'Quảng Ninh': 974000000
+                        }
                     }
                 }
             ],
-
-            'Kia': [
+            Kia: [
                 {
                     name: 'Kia Sorento',
                     seats: 7,
                     engineType: 'HEV / Xăng / Dầu',
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
                     chassis: 'Monocoque',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -633,34 +1183,82 @@
                     groundClearance: '176 mm',
                     fuelTank: '67L',
                     displacement: '2497 cc (Xăng) / 2151 cc (Dầu) / 1598 cc (Hybrid)',
-                    colors: ['Trắng', 'Đen', 'Xám', 'Xanh', 'Đỏ'],
-                    type: '7 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Xanh',
+                        'Đỏ'
+                    ],
                     engine: '2.4L Turbo/2.2L Diesel',
                     power: '277 PS / 200 PS',
                     fuel: '7.5 L/100km',
                     transmission: 'AT 8-speed',
-                    safety: ['ABS', 'ESC', 'Collision Warning', '6 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Parking Sensors'],
-                    variants: ['L', 'EX', 'SX'],
-                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay', 'Sunroof'],
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'Collision Warning',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Parking Sensors'
+                    ],
+                    variants: [
+                        'L',
+                        'EX',
+                        'SX'
+                    ],
+                    amenities: [
+                        '10.25-inch touchscreen',
+                        'Apple CarPlay',
+                        'Sunroof'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/kia/sorento/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/kia/sorento/' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/kia/sorento/' }
+                        {
+                            source: 'KBB',
+                            url: 'https://www.kbb.com/kia/sorento/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 1180000000, 'Bắc Ninh': 1160000000, 'Hải Dương': 1155000000, 'Hải Phòng': 1150000000, 'Quảng Ninh': 1140000000 },
+                    prices: {
+                        'Hà Nội': 1180000000,
+                        'Bắc Ninh': 1160000000,
+                        'Hải Dương': 1155000000,
+                        'Hải Phòng': 1150000000,
+                        'Quảng Ninh': 1140000000
+                    },
                     variantPrices: {
-                        'L': { 'Hà Nội': 1040000000, 'Bắc Ninh': 1020000000, 'Hải Dương': 1015000000, 'Hải Phòng': 1010000000, 'Quảng Ninh': 1000000000 },
-                        'EX': { 'Hà Nội': 1180000000, 'Bắc Ninh': 1160000000, 'Hải Dương': 1155000000, 'Hải Phòng': 1150000000, 'Quảng Ninh': 1140000000 },
-                        'SX': { 'Hà Nội': 1300000000, 'Bắc Ninh': 1280000000, 'Hải Dương': 1275000000, 'Hải Phòng': 1270000000, 'Quảng Ninh': 1260000000 }
+                        L: {
+                            'Hà Nội': 1040000000,
+                            'Bắc Ninh': 1020000000,
+                            'Hải Dương': 1015000000,
+                            'Hải Phòng': 1010000000,
+                            'Quảng Ninh': 1000000000
+                        },
+                        EX: {
+                            'Hà Nội': 1180000000,
+                            'Bắc Ninh': 1160000000,
+                            'Hải Dương': 1155000000,
+                            'Hải Phòng': 1150000000,
+                            'Quảng Ninh': 1140000000
+                        },
+                        SX: {
+                            'Hà Nội': 1300000000,
+                            'Bắc Ninh': 1280000000,
+                            'Hải Dương': 1275000000,
+                            'Hải Phòng': 1270000000,
+                            'Quảng Ninh': 1260000000
+                        }
                     }
                 },
                 {
                     name: 'Kia Sportage',
                     seats: 5,
                     engineType: 'Xăng / Dầu',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
                     chassis: 'Monocoque',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -671,37 +1269,254 @@
                     groundClearance: '190 mm',
                     fuelTank: '54L',
                     displacement: '1999 cc (Xăng) / 1598 cc (Turbo) / 1998 cc (Dầu)',
-                    colors: ['Trắng', 'Đen', 'Xám', 'Xanh', 'Đỏ'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Xanh',
+                        'Đỏ'
+                    ],
                     engine: '1.6L Turbo/2.0L Diesel',
                     power: '177 PS / 186 PS',
                     fuel: '6.5 L/100km',
                     transmission: 'AT 6-speed',
-                    safety: ['ABS', 'ESC', '6 airbags'],
-                    adas: ['Cruise Control', 'Parking Sensors'],
-                    variants: ['Standard', 'Plus', 'Premium'],
-                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Alloy wheels'],
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Cruise Control',
+                        'Parking Sensors'
+                    ],
+                    variants: [
+                        'Standard',
+                        'Plus',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Alloy wheels'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/kia/sportage/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/kia/sportage/' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/kia/sportage/' }
+                        {
+                            source: 'Edmunds',
+                            url: 'https://www.edmunds.com/kia/sportage/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 920000000, 'Bắc Ninh': 900000000, 'Hải Dương': 895000000, 'Hải Phòng': 890000000, 'Quảng Ninh': 885000000 },
+                    prices: {
+                        'Hà Nội': 920000000,
+                        'Bắc Ninh': 900000000,
+                        'Hải Dương': 895000000,
+                        'Hải Phòng': 890000000,
+                        'Quảng Ninh': 885000000
+                    },
                     variantPrices: {
-                        'Standard': { 'Hà Nội': 800000000, 'Bắc Ninh': 780000000, 'Hải Dương': 775000000, 'Hải Phòng': 770000000, 'Quảng Ninh': 765000000 },
-                        'Plus': { 'Hà Nội': 920000000, 'Bắc Ninh': 900000000, 'Hải Dương': 895000000, 'Hải Phòng': 890000000, 'Quảng Ninh': 885000000 },
-                        'Premium': { 'Hà Nội': 1040000000, 'Bắc Ninh': 1020000000, 'Hải Dương': 1015000000, 'Hải Phòng': 1010000000, 'Quảng Ninh': 1005000000 }
+                        Standard: {
+                            'Hà Nội': 800000000,
+                            'Bắc Ninh': 780000000,
+                            'Hải Dương': 775000000,
+                            'Hải Phòng': 770000000,
+                            'Quảng Ninh': 765000000
+                        },
+                        Plus: {
+                            'Hà Nội': 920000000,
+                            'Bắc Ninh': 900000000,
+                            'Hải Dương': 895000000,
+                            'Hải Phòng': 890000000,
+                            'Quảng Ninh': 885000000
+                        },
+                        Premium: {
+                            'Hà Nội': 1040000000,
+                            'Bắc Ninh': 1020000000,
+                            'Hải Dương': 1015000000,
+                            'Hải Phòng': 1010000000,
+                            'Quảng Ninh': 1005000000
+                        }
+                    }
+                },
+                {
+                    name: 'Kia Seltos',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện (MDPS)',
+                    driveType: 'FWD',
+                    dimensions: '4315 x 1800 x 1645 mm',
+                    weight: '1250 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: '50L',
+                    displacement: '1353 cc (Turbo) / 1497 cc',
+                    colors: [
+                        'Trắng đầu đen',
+                        'Cam đầu đen',
+                        'Đỏ đầu đen',
+                        'Vàng đầu đen'
+                    ],
+                    engine: '1.4L Turbo / 1.5L',
+                    power: '115 - 138 PS',
+                    fuel: '6.2 - 6.9 L/100km',
+                    transmission: '7DCT / CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'ESP',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Traction Modes',
+                        'Parking Sensors',
+                        'Reverse Camera'
+                    ],
+                    variants: [
+                        'Deluxe',
+                        'Luxury',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '10.25-inch screen',
+                        'Mood lighting',
+                        'Ventilated seats (Premium)'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'KBB Kia Seltos',
+                            url: 'https://www.kbb.com/kia/seltos/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 650000000,
+                        'Bắc Ninh': 640000000,
+                        'Hải Dương': 635000000,
+                        'Hải Phòng': 630000000,
+                        'Quảng Ninh': 625000000
+                    },
+                    variantPrices: {
+                        Deluxe: {
+                            'Hà Nội': 599000000,
+                            'Bắc Ninh': 589000000,
+                            'Hải Dương': 584000000,
+                            'Hải Phòng': 579000000,
+                            'Quảng Ninh': 574000000
+                        },
+                        Luxury: {
+                            'Hà Nội': 650000000,
+                            'Bắc Ninh': 640000000,
+                            'Hải Dương': 635000000,
+                            'Hải Phòng': 630000000,
+                            'Quảng Ninh': 625000000
+                        },
+                        Premium: {
+                            'Hà Nội': 739000000,
+                            'Bắc Ninh': 729000000,
+                            'Hải Dương': 724000000,
+                            'Hải Phòng': 719000000,
+                            'Quảng Ninh': 714000000
+                        }
+                    }
+                },
+                {
+                    name: 'Kia Carnival',
+                    seats: 7,
+                    engineType: 'Xăng / Dầu',
+                    type: '7 chỗ MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện (MDPS)',
+                    driveType: 'FWD',
+                    dimensions: '5155 x 1995 x 1775 mm',
+                    weight: '2010 - 2130 kg',
+                    groundClearance: '172 mm',
+                    fuelTank: '72L',
+                    displacement: '2151 cc (Dầu) / 3470 cc (Xăng)',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Xanh'
+                    ],
+                    engine: '2.2L Diesel / 3.5L V6 Xăng',
+                    power: '199 - 268 PS',
+                    fuel: '7.2 - 9.8 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'HAC',
+                        '7 airbags'
+                    ],
+                    adas: [
+                        'ADAPTIVE CRUISE CONTROL',
+                        'Lane Keeping Assist',
+                        'Surround View Monitor'
+                    ],
+                    variants: [
+                        'Luxury 8S',
+                        'Premium 7S',
+                        'Signature 7S'
+                    ],
+                    amenities: [
+                        'Dual screens (12.3-inch)',
+                        'Premium Bose audio',
+                        'Dual sunroof',
+                        'Heated & ventilated Captain seats'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Edmunds Kia Carnival',
+                            url: 'https://www.edmunds.com/kia/carnival/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 1300000000,
+                        'Bắc Ninh': 1280000000,
+                        'Hải Dương': 1275000000,
+                        'Hải Phòng': 1270000000,
+                        'Quảng Ninh': 1260000000
+                    },
+                    variantPrices: {
+                        'Luxury 8S': {
+                            'Hà Nội': 1219000000,
+                            'Bắc Ninh': 1209000000,
+                            'Hải Dương': 1204000000,
+                            'Hải Phòng': 1199000000,
+                            'Quảng Ninh': 1194000000
+                        },
+                        'Premium 7S': {
+                            'Hà Nội': 1389000000,
+                            'Bắc Ninh': 1379000000,
+                            'Hải Dương': 1374000000,
+                            'Hải Phòng': 1369000000,
+                            'Quảng Ninh': 1364000000
+                        },
+                        'Signature 7S': {
+                            'Hà Nội': 1529000000,
+                            'Bắc Ninh': 1519000000,
+                            'Hải Dương': 1514000000,
+                            'Hải Phòng': 1509000000,
+                            'Quảng Ninh': 1504000000
+                        }
                     }
                 }
             ],
-
-            'Mazda': [
+            Mazda: [
                 {
                     name: 'Mazda CX-5',
                     seats: 5,
                     engineType: 'Xăng',
+                    type: '5 chỗ SUV Skyactiv',
+                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
                     chassis: 'Monocoque (SkyActiv-Chassis)',
                     suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -712,37 +1527,254 @@
                     groundClearance: '200 mm',
                     fuelTank: '56L (FWD) / 58L (AWD)',
                     displacement: '1998 cc / 2488 cc',
-                    colors: ['Đỏ Soul Red', 'Trắng Snowflake', 'Xám Machine', 'Đen Jet Black'],
-                    type: '5 chỗ SUV Skyactiv',
-                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+                    colors: [
+                        'Đỏ Soul Red',
+                        'Trắng Snowflake',
+                        'Xám Machine',
+                        'Đen Jet Black'
+                    ],
                     engine: '2.0L Skyactiv-G/2.2L Skyactiv-D',
                     power: '165 PS / 175 PS',
                     fuel: '6.0 L/100km',
                     transmission: 'AT 6-speed',
-                    safety: ['ABS', 'ESP', 'i-Activsense', '6 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Monitor'],
-                    variants: ['Standard', 'Select', 'Premium'],
-                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Power sunroof'],
+                    safety: [
+                        'ABS',
+                        'ESP',
+                        'i-Activsense',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Blind Spot Monitor'
+                    ],
+                    variants: [
+                        'Standard',
+                        'Select',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Power sunroof'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/mazda/cx-5/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/mazda/cx-5/' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/mazda/cx-5/' }
+                        {
+                            source: 'KBB',
+                            url: 'https://www.kbb.com/mazda/cx-5/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 980000000, 'Bắc Ninh': 950000000, 'Hải Dương': 945000000, 'Hải Phòng': 940000000, 'Quảng Ninh': 935000000 },
+                    prices: {
+                        'Hà Nội': 980000000,
+                        'Bắc Ninh': 950000000,
+                        'Hải Dương': 945000000,
+                        'Hải Phòng': 940000000,
+                        'Quảng Ninh': 935000000
+                    },
                     variantPrices: {
-                        'Standard': { 'Hà Nội': 850000000, 'Bắc Ninh': 820000000, 'Hải Dương': 815000000, 'Hải Phòng': 810000000, 'Quảng Ninh': 805000000 },
-                        'Select': { 'Hà Nội': 980000000, 'Bắc Ninh': 950000000, 'Hải Dương': 945000000, 'Hải Phòng': 940000000, 'Quảng Ninh': 935000000 },
-                        'Premium': { 'Hà Nội': 1100000000, 'Bắc Ninh': 1070000000, 'Hải Dương': 1065000000, 'Hải Phòng': 1060000000, 'Quảng Ninh': 1055000000 }
+                        Standard: {
+                            'Hà Nội': 850000000,
+                            'Bắc Ninh': 820000000,
+                            'Hải Dương': 815000000,
+                            'Hải Phòng': 810000000,
+                            'Quảng Ninh': 805000000
+                        },
+                        Select: {
+                            'Hà Nội': 980000000,
+                            'Bắc Ninh': 950000000,
+                            'Hải Dương': 945000000,
+                            'Hải Phòng': 940000000,
+                            'Quảng Ninh': 935000000
+                        },
+                        Premium: {
+                            'Hà Nội': 1100000000,
+                            'Bắc Ninh': 1070000000,
+                            'Hải Dương': 1065000000,
+                            'Hải Phòng': 1060000000,
+                            'Quảng Ninh': 1055000000
+                        }
+                    }
+                },
+                {
+                    name: 'Mazda 3',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ Sedan',
+                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4660 x 1795 x 1440 mm',
+                    weight: '1330 kg',
+                    groundClearance: '145 mm',
+                    fuelTank: '51L',
+                    displacement: '1496 cc',
+                    colors: [
+                        'Đỏ Soul Red',
+                        'Trắng Snowflake',
+                        'Xám Polymetal',
+                        'Đen'
+                    ],
+                    engine: '1.5L Skyactiv-G',
+                    power: '110 PS',
+                    fuel: '5.9 L/100km',
+                    transmission: 'AT 6-speed',
+                    safety: [
+                        'ABS',
+                        'DSC',
+                        'HLA',
+                        'ESS',
+                        '7 airbags'
+                    ],
+                    adas: [
+                        'i-Activsense',
+                        'Smart City Brake Support',
+                        'Lane Keep Assist'
+                    ],
+                    variants: [
+                        'Deluxe',
+                        'Luxury',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '8.8-inch screen',
+                        'Heads Up Display (HUD)',
+                        '18-inch alloy wheels'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Edmunds Mazda 3',
+                            url: 'https://www.edmunds.com/mazda/3/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 630000000,
+                        'Bắc Ninh': 620000000,
+                        'Hải Dương': 615000000,
+                        'Hải Phòng': 610000000,
+                        'Quảng Ninh': 605000000
+                    },
+                    variantPrices: {
+                        Deluxe: {
+                            'Hà Nội': 579000000,
+                            'Bắc Ninh': 569000000,
+                            'Hải Dương': 564000000,
+                            'Hải Phòng': 559000000,
+                            'Quảng Ninh': 554000000
+                        },
+                        Luxury: {
+                            'Hà Nội': 619000000,
+                            'Bắc Ninh': 609000000,
+                            'Hải Dương': 604000000,
+                            'Hải Phòng': 599000000,
+                            'Quảng Ninh': 594000000
+                        },
+                        Premium: {
+                            'Hà Nội': 739000000,
+                            'Bắc Ninh': 729000000,
+                            'Hải Dương': 724000000,
+                            'Hải Phòng': 719000000,
+                            'Quảng Ninh': 714000000
+                        }
+                    }
+                },
+                {
+                    name: 'Mazda CX-8',
+                    seats: 7,
+                    engineType: 'Xăng',
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (SkyActiv)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD / AWD',
+                    dimensions: '4900 x 1840 x 1730 mm',
+                    weight: '1770 - 1840 kg',
+                    groundClearance: '200 mm',
+                    fuelTank: '72L',
+                    displacement: '2488 cc',
+                    colors: [
+                        'Trắng',
+                        'Đỏ',
+                        'Xám',
+                        'Xanh đen'
+                    ],
+                    engine: '2.5L Skyactiv-G',
+                    power: '188 PS',
+                    fuel: '8.2 L/100km',
+                    transmission: 'AT 6-speed',
+                    safety: [
+                        'ABS',
+                        'DSC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'i-Activsense',
+                        'Radar Cruise Control',
+                        'Lane-keep Assist',
+                        'Smart City Brake'
+                    ],
+                    variants: [
+                        'Luxury',
+                        'Premium',
+                        'Premium AWD'
+                    ],
+                    amenities: [
+                        'Bose 10-speakers',
+                        'Nappa leather seats',
+                        'Triple-zone climate control'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Mazda CX-8 Spec',
+                            url: 'https://www.mazda.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 990000000,
+                        'Bắc Ninh': 975000000,
+                        'Hải Dương': 970000000,
+                        'Hải Phòng': 965000000,
+                        'Quảng Ninh': 960000000
+                    },
+                    variantPrices: {
+                        Luxury: {
+                            'Hà Nội': 949000000,
+                            'Bắc Ninh': 939000000,
+                            'Hải Dương': 934000000,
+                            'Hải Phòng': 929000000,
+                            'Quảng Ninh': 924000000
+                        },
+                        Premium: {
+                            'Hà Nội': 1029000000,
+                            'Bắc Ninh': 1019000000,
+                            'Hải Dương': 1014000000,
+                            'Hải Phòng': 1009000000,
+                            'Quảng Ninh': 1004000000
+                        },
+                        'Premium AWD': {
+                            'Hà Nội': 1129000000,
+                            'Bắc Ninh': 1119000000,
+                            'Hải Dương': 1114000000,
+                            'Hải Phòng': 1109000000,
+                            'Quảng Ninh': 1104000000
+                        }
                     }
                 }
             ],
-
-            'Mitsubishi': [
+            Mitsubishi: [
                 {
                     name: 'Mitsubishi Outlander',
                     seats: 7,
                     engineType: 'Xăng',
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
                     chassis: 'Monocoque (RISE body)',
                     suspension: 'Trước: MacPherson với thanh cân bằng, Sau: Liên kết đa điểm với thanh cân bằng',
                     brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
@@ -753,37 +1785,272 @@
                     groundClearance: '190 mm',
                     fuelTank: '60L',
                     displacement: '1998 cc',
-                    colors: ['Trắng', 'Đen', 'Đỏ', 'Xám', 'Nâu'],
-                    type: '7 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Xám',
+                        'Nâu'
+                    ],
                     engine: '2.4L MIVEC',
                     power: '175 PS',
                     fuel: '7.8 L/100km',
                     transmission: 'CVT',
-                    safety: ['ABS', 'ASC', 'Collision Mitigation', '6 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping'],
-                    variants: ['GLX', 'CVT', 'Premium'],
-                    amenities: ['7-inch touchscreen', 'Apple CarPlay', 'Power windows'],
+                    safety: [
+                        'ABS',
+                        'ASC',
+                        'Collision Mitigation',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping'
+                    ],
+                    variants: [
+                        'GLX',
+                        'CVT',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '7-inch touchscreen',
+                        'Apple CarPlay',
+                        'Power windows'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/mitsubishi/outlander/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/mitsubishi/outlander/' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
+                        {
+                            source: 'KBB',
+                            url: 'https://www.kbb.com/mitsubishi/outlander/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 910000000, 'Bắc Ninh': 890000000, 'Hải Dương': 885000000, 'Hải Phòng': 880000000, 'Quảng Ninh': 875000000 },
+                    prices: {
+                        'Hà Nội': 910000000,
+                        'Bắc Ninh': 890000000,
+                        'Hải Dương': 885000000,
+                        'Hải Phòng': 880000000,
+                        'Quảng Ninh': 875000000
+                    },
                     variantPrices: {
-                        'GLX': { 'Hà Nội': 790000000, 'Bắc Ninh': 770000000, 'Hải Dương': 765000000, 'Hải Phòng': 760000000, 'Quảng Ninh': 755000000 },
-                        'CVT': { 'Hà Nội': 910000000, 'Bắc Ninh': 890000000, 'Hải Dương': 885000000, 'Hải Phòng': 880000000, 'Quảng Ninh': 875000000 },
-                        'Premium': { 'Hà Nội': 1030000000, 'Bắc Ninh': 1010000000, 'Hải Dương': 1005000000, 'Hải Phòng': 1000000000, 'Quảng Ninh': 995000000 }
+                        GLX: {
+                            'Hà Nội': 790000000,
+                            'Bắc Ninh': 770000000,
+                            'Hải Dương': 765000000,
+                            'Hải Phòng': 760000000,
+                            'Quảng Ninh': 755000000
+                        },
+                        CVT: {
+                            'Hà Nội': 910000000,
+                            'Bắc Ninh': 890000000,
+                            'Hải Dương': 885000000,
+                            'Hải Phòng': 880000000,
+                            'Quảng Ninh': 875000000
+                        },
+                        Premium: {
+                            'Hà Nội': 1030000000,
+                            'Bắc Ninh': 1010000000,
+                            'Hải Dương': 1005000000,
+                            'Hải Phòng': 1000000000,
+                            'Quảng Ninh': 995000000
+                        }
+                    }
+                },
+                {
+                    name: 'Mitsubishi Xforce',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4390 x 1810 x 1660 mm',
+                    weight: '1245 kg',
+                    groundClearance: '222 mm',
+                    fuelTank: '42L',
+                    displacement: '1499 cc',
+                    colors: [
+                        'Vàng mờ',
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Xám'
+                    ],
+                    engine: '1.5L MIVEC',
+                    power: '105 PS',
+                    fuel: '6.2 L/100km',
+                    transmission: 'CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'BA',
+                        'ASC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Active Yaw Control (AYC)',
+                        'Wet Mode/Mud Mode driving presets',
+                        'Blind Spot Warning'
+                    ],
+                    variants: [
+                        'GLX',
+                        'Exceed',
+                        'Premium',
+                        'Ultimate'
+                    ],
+                    amenities: [
+                        '12.3-inch screen',
+                        'Yamaha Premium Sound',
+                        'Wireless charger',
+                        'Ambient light'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Mitsubishi Xforce Review',
+                            url: 'https://www.mitsubishi-motors.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 660000000,
+                        'Bắc Ninh': 650000000,
+                        'Hải Dương': 645000000,
+                        'Hải Phòng': 640000000,
+                        'Quảng Ninh': 635000000
+                    },
+                    variantPrices: {
+                        GLX: {
+                            'Hà Nội': 599000000,
+                            'Bắc Ninh': 589000000,
+                            'Hải Dương': 584000000,
+                            'Hải Phòng': 579000000,
+                            'Quảng Ninh': 574000000
+                        },
+                        Exceed: {
+                            'Hà Nội': 640000000,
+                            'Bắc Ninh': 630000000,
+                            'Hải Dương': 625000000,
+                            'Hải Phòng': 620000000,
+                            'Quảng Ninh': 615000000
+                        },
+                        Premium: {
+                            'Hà Nội': 680000000,
+                            'Bắc Ninh': 670000000,
+                            'Hải Dương': 665000000,
+                            'Hải Phòng': 660000000,
+                            'Quảng Ninh': 635000000
+                        },
+                        Ultimate: {
+                            'Hà Nội': 705000000,
+                            'Bắc Ninh': 695000000,
+                            'Hải Dương': 690000000,
+                            'Hải Phòng': 685000000,
+                            'Quảng Ninh': 680000000
+                        }
+                    }
+                },
+                {
+                    name: 'Mitsubishi Xpander',
+                    seats: 7,
+                    engineType: 'Xăng',
+                    type: '7 chỗ MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson với lò xo cuộn, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4595 x 1750 x 1750 mm',
+                    weight: '1250 kg',
+                    groundClearance: '225 mm',
+                    fuelTank: '45L',
+                    displacement: '1499 cc',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Bạc',
+                        'Xám'
+                    ],
+                    engine: '1.5L MIVEC',
+                    power: '105 PS',
+                    fuel: '6.9 L/100km',
+                    transmission: 'AT 4-speed / MT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'BA',
+                        'ASC',
+                        'HSA'
+                    ],
+                    adas: [
+                        'Cruise Control',
+                        'Reverse Camera'
+                    ],
+                    variants: [
+                        'MT',
+                        'AT',
+                        'AT Premium',
+                        'Cross'
+                    ],
+                    amenities: [
+                        '9-inch screen',
+                        'Apple CarPlay',
+                        'Electronic parking brake'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Mitsubishi Xpander Info',
+                            url: 'https://www.mitsubishi-motors.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 640000000,
+                        'Bắc Ninh': 630000000,
+                        'Hải Dương': 625000000,
+                        'Hải Phòng': 620000000,
+                        'Quảng Ninh': 615000000
+                    },
+                    variantPrices: {
+                        MT: {
+                            'Hà Nội': 560000000,
+                            'Bắc Ninh': 550000000,
+                            'Hải Dương': 545000000,
+                            'Hải Phòng': 540000000,
+                            'Quảng Ninh': 535000000
+                        },
+                        AT: {
+                            'Hà Nội': 598000000,
+                            'Bắc Ninh': 588000000,
+                            'Hải Dương': 583000000,
+                            'Hải Phòng': 578000000,
+                            'Quảng Ninh': 573000000
+                        },
+                        'AT Premium': {
+                            'Hà Nội': 658000000,
+                            'Bắc Ninh': 648000000,
+                            'Hải Dương': 643000000,
+                            'Hải Phòng': 638000000,
+                            'Quảng Ninh': 633000000
+                        },
+                        Cross: {
+                            'Hà Nội': 698000000,
+                            'Bắc Ninh': 688000000,
+                            'Hải Dương': 683000000,
+                            'Hải Phòng': 678000000,
+                            'Quảng Ninh': 673000000
+                        }
                     }
                 }
             ],
-
-            'Suzuki': [
+            Suzuki: [
                 {
                     name: 'Suzuki Ertiga',
                     seats: 7,
                     engineType: 'HEV',
+                    type: '7 chỗ MPV Hybrid',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
                     chassis: 'Monocoque (HEARTECT platform)',
                     suspension: 'Trước: MacPherson với lò xo cuộn, Sau: Thanh xoắn với lò xo cuộn',
                     brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
@@ -794,395 +2061,74 @@
                     groundClearance: '180 mm',
                     fuelTank: '45L',
                     displacement: '1462 cc',
-                    colors: ['Trắng', 'Đen', 'Bạc', 'Xám', 'Đỏ'],
-                    type: '7 chỗ MPV Hybrid',
-                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Bạc',
+                        'Xám',
+                        'Đỏ'
+                    ],
                     engine: '1.5L K15B Hybrid',
                     power: '105 PS',
                     fuel: '4.8 L/100km',
                     transmission: 'CVT',
-                    safety: ['ABS', 'Brake Assist', 'Collision Mitigation', '6 airbags'],
-                    adas: ['Lane Departure Warning'],
-                    variants: ['MT', 'AT Sport Limited'],
-                    amenities: ['5-inch touchscreen', 'Power windows', 'Rear parking sensor'],
+                    safety: [
+                        'ABS',
+                        'Brake Assist',
+                        'Collision Mitigation',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Lane Departure Warning'
+                    ],
+                    variants: [
+                        'MT',
+                        'AT Sport Limited'
+                    ],
+                    amenities: [
+                        '5-inch touchscreen',
+                        'Power windows',
+                        'Rear parking sensor'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/suzuki/ertiga/' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
-                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' }
+                        {
+                            source: 'KBB',
+                            url: 'https://www.kbb.com/suzuki/ertiga/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 650000000, 'Bắc Ninh': 630000000, 'Hải Dương': 625000000, 'Hải Phòng': 620000000, 'Quảng Ninh': 615000000 },
+                    prices: {
+                        'Hà Nội': 650000000,
+                        'Bắc Ninh': 630000000,
+                        'Hải Dương': 625000000,
+                        'Hải Phòng': 620000000,
+                        'Quảng Ninh': 615000000
+                    },
                     variantPrices: {
-                        'MT': { 'Hà Nội': 580000000, 'Bắc Ninh': 560000000, 'Hải Dương': 555000000, 'Hải Phòng': 550000000, 'Quảng Ninh': 545000000 },
-                        'AT Sport Limited': { 'Hà Nội': 650000000, 'Bắc Ninh': 630000000, 'Hải Dương': 625000000, 'Hải Phòng': 620000000, 'Quảng Ninh': 615000000 }
+                        MT: {
+                            'Hà Nội': 580000000,
+                            'Bắc Ninh': 560000000,
+                            'Hải Dương': 555000000,
+                            'Hải Phòng': 550000000,
+                            'Quảng Ninh': 545000000
+                        },
+                        'AT Sport Limited': {
+                            'Hà Nội': 650000000,
+                            'Bắc Ninh': 630000000,
+                            'Hải Dương': 625000000,
+                            'Hải Phòng': 620000000,
+                            'Quảng Ninh': 615000000
+                        }
                     }
                 }
             ],
-
-            // Chinese Brands
-            'Geely': [
-                {
-                    name: 'Geely Monjaro',
-                    seats: 5,
-                    engineType: 'Xăng',
-                    chassis: 'Monocoque (CMA Platform)',
-                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
-                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
-                    steering: 'Trợ lực điện (EPS)',
-                    driveType: 'AWD (4WD)',
-                    dimensions: '4770 x 1895 x 1689 mm',
-                    weight: '1780 kg',
-                    groundClearance: '210 mm',
-                    fuelTank: '62L',
-                    displacement: '1969 cc (Turbo)',
-                    colors: ['Trắng', 'Đen', 'Xám xanh', 'Bạc'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
-                    engine: '1.5L Turbo/1.8L Turbo',
-                    power: '177 PS / 218 PS',
-                    fuel: '6.5 L/100km',
-                    transmission: 'AT 7-speed',
-                    safety: ['ABS', 'ESC', '8 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Monitor'],
-                    variants: ['Comfort', 'Luxury', 'Premium'],
-                    amenities: ['12.3-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
-                    review: 'https://www.youtube.com/watch?v=oKXjSYQQtHs',
-                    reviews: [
-                        { source: 'YouTube (Daniel Chavarría 2026 Review)', url: 'https://www.youtube.com/watch?v=oKXjSYQQtHs' },
-                        { source: 'Geely Vietnam', url: 'https://www.geely.com/en/models/monjaro' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
-                    ],
-                    prices: { 'Hà Nội': 680000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
-                    variantPrices: {
-                        'Comfort': { 'Hà Nội': 580000000, 'Bắc Ninh': 565000000, 'Hải Dương': 560000000, 'Hải Phòng': 555000000, 'Quảng Ninh': 550000000 },
-                        'Luxury': { 'Hà Nội': 680000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
-                        'Premium': { 'Hà Nội': 820000000, 'Bắc Ninh': 805000000, 'Hải Dương': 800000000, 'Hải Phòng': 795000000, 'Quảng Ninh': 790000000 }
-                    }
-                }
-            ],
-
-            'Omoda/Jaeceo': [
-                {
-                    name: 'Omoda C5',
-                    seats: 5,
-                    engineType: 'Xăng',
-                    chassis: 'Monocoque unibody',
-                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm (bản cao) / Dầm xoắn',
-                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
-                    steering: 'Trợ lực điện',
-                    driveType: 'FWD',
-                    dimensions: '4400 x 1830 x 1585 mm',
-                    weight: '1420 - 1455 kg',
-                    groundClearance: '190 mm',
-                    fuelTank: '51L',
-                    displacement: '1498 cc (Turbo)',
-                    colors: ['Xám đậm', 'Trắng', 'Đen', 'Xanh dương', 'Bạc'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
-                    engine: '1.6L Turbo',
-                    power: '197 PS',
-                    fuel: '6.8 L/100km',
-                    transmission: 'AT 7-speed',
-                    safety: ['ABS', 'ESC', '8 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Parking Assist'],
-                    variants: ['Comfort', 'Premium', 'Flagship'],
-                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay', 'Sunroof'],
-                    review: 'https://www.parkers.co.uk/omoda/5/review/',
-                    reviews: [
-                        { source: 'Parkers Review', url: 'https://www.parkers.co.uk/omoda/5/review/' },
-                        { source: 'Cinch Review', url: 'https://www.cinch.co.uk/used-cars/omoda/5/review' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
-                    ],
-                    prices: { 'Hà Nội': 720000000, 'Bắc Ninh': 700000000, 'Hải Dương': 695000000, 'Hải Phòng': 690000000, 'Quảng Ninh': 685000000 },
-                    variantPrices: {
-                        'Comfort': { 'Hà Nội': 620000000, 'Bắc Ninh': 600000000, 'Hải Dương': 595000000, 'Hải Phòng': 590000000, 'Quảng Ninh': 585000000 },
-                        'Premium': { 'Hà Nội': 720000000, 'Bắc Ninh': 700000000, 'Hải Dương': 695000000, 'Hải Phòng': 690000000, 'Quảng Ninh': 685000000 },
-                        'Flagship': { 'Hà Nội': 850000000, 'Bắc Ninh': 830000000, 'Hải Dương': 825000000, 'Hải Phòng': 820000000, 'Quảng Ninh': 815000000 }
-                    }
-                }
-            ],
-
-            'Lynk & Co': [
-                {
-                    name: 'Lynk & Co 05',
-                    seats: 5,
-                    engineType: 'Xăng',
-                    chassis: 'Monocoque (CMA Platform)',
-                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
-                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
-                    steering: 'Trợ lực điện',
-                    driveType: 'AWD',
-                    dimensions: '4592 x 1879 x 1628 mm',
-                    weight: '1788 kg',
-                    groundClearance: '185 mm',
-                    fuelTank: '54L',
-                    displacement: '1969 cc (Turbo)',
-                    colors: ['Đen', 'Xám', 'Trắng'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
-                    engine: '2.0L Turbo',
-                    power: '238 PS',
-                    fuel: '7.2 L/100km',
-                    transmission: 'AT 8-speed',
-                    safety: ['ABS', 'ESC', '8 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Blind Spot Monitor'],
-                    variants: ['Plus', 'Pro', 'Premium'],
-                    amenities: ['12.3-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
-                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
-                    reviews: [
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
-                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' },
-                        { source: 'Lynk & Co Vietnam', url: 'https://www.lynkco.com/' }
-                    ],
-                    prices: { 'Hà Nội': 1590000000, 'Bắc Ninh': 1550000000, 'Hải Dương': 1540000000, 'Hải Phòng': 1530000000, 'Quảng Ninh': 1520000000 },
-                    variantPrices: {
-                        'Plus': { 'Hà Nội': 1390000000, 'Bắc Ninh': 1350000000, 'Hải Dương': 1340000000, 'Hải Phòng': 1330000000, 'Quảng Ninh': 1320000000 },
-                        'Pro': { 'Hà Nội': 1590000000, 'Bắc Ninh': 1550000000, 'Hải Dương': 1540000000, 'Hải Phòng': 1530000000, 'Quảng Ninh': 1520000000 },
-                        'Premium': { 'Hà Nội': 1800000000, 'Bắc Ninh': 1760000000, 'Hải Dương': 1750000000, 'Hải Phòng': 1740000000, 'Quảng Ninh': 1730000000 }
-                    }
-                },
-                {
-                    name: 'Lynk & Co 06',
-                    seats: 5,
-                    engineType: 'Xăng',
-                    chassis: 'Monocoque (BMA Platform)',
-                    suspension: 'Trước: MacPherson, Sau: Đa liên kết độc lập',
-                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
-                    steering: 'Trợ lực điện',
-                    driveType: 'FWD',
-                    dimensions: '4340 x 1820 x 1625 mm',
-                    weight: '1465 kg',
-                    groundClearance: '168 mm',
-                    fuelTank: '51L',
-                    displacement: '1499 cc (Turbo)',
-                    colors: ['Hồng pastel', 'Xanh', 'Trắng', 'Xám'],
-                    type: 'B-segment Crossover',
-                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
-                    engine: '1.5L Turbo',
-                    power: '177 PS',
-                    fuel: '6.2 L/100km',
-                    transmission: 'AT 7-speed',
-                    safety: ['ABS', 'ESC', '6 airbags'],
-                    adas: ['Cruise Control', 'Parking Sensors'],
-                    variants: ['Core', 'Core Plus', 'Flagship'],
-                    amenities: ['10.25-inch touchscreen', 'Apple CarPlay'],
-                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
-                    reviews: [
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
-                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' },
-                        { source: 'Lynk & Co Vietnam', url: 'https://www.lynkco.com/' }
-                    ],
-                    prices: { 'Hà Nội': 679000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
-                    variantPrices: {
-                        'Core': { 'Hà Nội': 579000000, 'Bắc Ninh': 565000000, 'Hải Dương': 560000000, 'Hải Phòng': 555000000, 'Quảng Ninh': 550000000 },
-                        'Core Plus': { 'Hà Nội': 679000000, 'Bắc Ninh': 665000000, 'Hải Dương': 660000000, 'Hải Phòng': 655000000, 'Quảng Ninh': 650000000 },
-                        'Flagship': { 'Hà Nội': 779000000, 'Bắc Ninh': 765000000, 'Hải Dương': 760000000, 'Hải Phòng': 755000000, 'Quảng Ninh': 750000000 }
-                    }
-                }
-            ],
-
-            'BYD': [
-                {
-                    name: 'BYD Sealion 6 DM-i',
-                    seats: 5,
-                    engineType: 'PHEV',
-                    chassis: 'Monocoque',
-                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
-                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
-                    steering: 'Trợ lực điện',
-                    driveType: 'FWD',
-                    dimensions: '4775 x 1890 x 1670 mm',
-                    weight: '1810 kg',
-                    groundClearance: '155 mm',
-                    fuelTank: '60L + Pin 18.3 kWh',
-                    displacement: '1498 cc + Motor điện',
-                    colors: ['Trắng', 'Xám', 'Đen', 'Xanh'],
-                    type: 'Hybrid Sedan',
-                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
-                    engine: '1.5L Turbo + Hybrid',
-                    power: '160 PS EV Range',
-                    fuel: '4.5 L/100km',
-                    transmission: 'DHT',
-                    safety: ['ABS', 'ESC', '8 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Parking Assist'],
-                    variants: ['Comfort', 'Premium', 'Luxury'],
-                    amenities: ['12.8-inch touchscreen', 'Apple CarPlay', 'Leather seats'],
-                    review: 'https://www.carsguide.com.au/ev/byd-sealion-6-essential-99385',
-                    reviews: [
-                        { source: 'CarsGuide', url: 'https://www.carsguide.com.au/ev/byd-sealion-6-essential-99385' },
-                        { source: 'CleanTechnica', url: 'https://cleantechnica.com/2025/07/26/byd-sealion-06-bigger-faster-stronger-better/' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
-                    ],
-                    prices: { 'Hà Nội': 820000000, 'Bắc Ninh': 800000000, 'Hải Dương': 795000000, 'Hải Phòng': 790000000, 'Quảng Ninh': 785000000 },
-                    variantPrices: {
-                        'Comfort': { 'Hà Nội': 720000000, 'Bắc Ninh': 700000000, 'Hải Dương': 695000000, 'Hải Phòng': 690000000, 'Quảng Ninh': 685000000 },
-                        'Premium': { 'Hà Nội': 820000000, 'Bắc Ninh': 800000000, 'Hải Dương': 795000000, 'Hải Phòng': 790000000, 'Quảng Ninh': 785000000 },
-                        'Luxury': { 'Hà Nội': 950000000, 'Bắc Ninh': 930000000, 'Hải Dương': 925000000, 'Hải Phòng': 920000000, 'Quảng Ninh': 915000000 }
-                    }
-                },
-                {
-                    name: 'BYD Yuan Plus EV',
-                    seats: 5,
-                    engineType: 'EV',
-                    chassis: 'Monocoque (e-Platform 3.0)',
-                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
-                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
-                    steering: 'Trợ lực điện',
-                    driveType: 'FWD',
-                    dimensions: '4455 x 1875 x 1615 mm',
-                    weight: '1625 kg',
-                    groundClearance: '175 mm',
-                    fuelTank: 'Pin Blade LFP 60.48 kWh',
-                    displacement: 'Động cơ điện (N/A)',
-                    colors: ['Xanh lá', 'Xanh dương', 'Xám', 'Trắng', 'Đỏ'],
-                    type: 'Compact Electric SUV',
-                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
-                    engine: 'Electric 305 km range',
-                    power: '200 PS',
-                    fuel: '0 L/100km (EV)',
-                    transmission: 'Single speed',
-                    safety: ['ABS', 'ESC', '8 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Autonomous Parking'],
-                    variants: ['Standard', 'Premium', 'Luxury'],
-                    amenities: ['12.8-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
-                    review: 'https://cleantechnica.com/',
-                    reviews: [
-                        { source: 'CleanTechnica', url: 'https://cleantechnica.com/' },
-                        { source: 'Car News China', url: 'https://carnewschina.com/' },
-                        { source: 'Electrek', url: 'https://electrek.co/2026/03/30/byds-new-ev-lures-buyers-with-5-min-charging-low-prices/' }
-                    ],
-                    prices: { 'Hà Nội': 750000000, 'Bắc Ninh': 730000000, 'Hải Dương': 725000000, 'Hải Phòng': 720000000, 'Quảng Ninh': 715000000 },
-                    variantPrices: {
-                        'Standard': { 'Hà Nội': 640000000, 'Bắc Ninh': 620000000, 'Hải Dương': 615000000, 'Hải Phòng': 610000000, 'Quảng Ninh': 605000000 },
-                        'Premium': { 'Hà Nội': 750000000, 'Bắc Ninh': 730000000, 'Hải Dương': 725000000, 'Hải Phòng': 720000000, 'Quảng Ninh': 715000000 },
-                        'Luxury': { 'Hà Nội': 880000000, 'Bắc Ninh': 860000000, 'Hải Dương': 855000000, 'Hải Phòng': 850000000, 'Quảng Ninh': 845000000 }
-                    }
-                }
-            ],
-
-            'Wuling': [
-                {
-                    name: 'Wuling Hongguang EV',
-                    seats: 7,
-                    engineType: 'EV',
-                    chassis: 'Monocoque',
-                    suspension: 'Trước: MacPherson, Sau: Dầm xoắn phụ thuộc',
-                    brakes: 'Trước: Đĩa, Sau: Tang trống',
-                    steering: 'Trợ lực điện',
-                    driveType: 'RWD (Cầu sau)',
-                    dimensions: '3061 x 1520 x 1659 mm',
-                    weight: '860 kg',
-                    groundClearance: '125 mm',
-                    fuelTank: 'Pin LFP 17.3 kWh / 26.5 kWh',
-                    displacement: 'Động cơ điện (N/A)',
-                    colors: ['Hồng', 'Xanh nhạt', 'Trắng', 'Vàng'],
-                    type: 'Electric MPV',
-                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
-                    engine: 'Electric 400 km range',
-                    power: '150 PS',
-                    fuel: '0 L/100km (EV)',
-                    transmission: 'Single speed',
-                    safety: ['ABS', 'ESC', '6 airbags'],
-                    adas: ['Parking Sensors', 'Rear Camera'],
-                    variants: ['Standard', 'Long-range'],
-                    amenities: ['7-inch touchscreen', 'Dual sliding doors', 'USB charging'],
-                    review: 'https://carnewschina.com/',
-                    reviews: [
-                        { source: 'Car News China', url: 'https://carnewschina.com/' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
-                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' }
-                    ],
-                    prices: { 'Hà Nội': 350000000, 'Bắc Ninh': 340000000, 'Hải Dương': 335000000, 'Hải Phòng': 330000000, 'Quảng Ninh': 325000000 },
-                    variantPrices: {
-                        'Standard': { 'Hà Nội': 320000000, 'Bắc Ninh': 310000000, 'Hải Dương': 305000000, 'Hải Phòng': 300000000, 'Quảng Ninh': 295000000 },
-                        'Long-range': { 'Hà Nội': 350000000, 'Bắc Ninh': 340000000, 'Hải Dương': 335000000, 'Hải Phòng': 330000000, 'Quảng Ninh': 325000000 }
-                    }
-                }
-            ],
-
-            'Skoda': [
-                {
-                    name: 'Skoda Slavia',
-                    seats: 5,
-                    engineType: 'Xăng',
-                    chassis: 'Monocoque (MQB-A0-IN)',
-                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn nửa độc lập',
-                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
-                    steering: 'Trợ lực điện',
-                    driveType: 'FWD',
-                    dimensions: '4541 x 1752 x 1507 mm',
-                    weight: '1185 - 1278 kg',
-                    groundClearance: '179 mm',
-                    fuelTank: '45L',
-                    displacement: '999 cc / 1498 cc (Turbo)',
-                    colors: ['Đỏ Velvet', 'Xanh Crystal', 'Trắng Candy', 'Đen Carbon', 'Bạc Brilliant'],
-                    type: 'Compact Sedan',
-                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
-                    engine: '1.0L Turbo',
-                    power: '113 PS',
-                    fuel: '5.5 L/100km',
-                    transmission: 'MT/AT 6-speed',
-                    safety: ['ABS', 'ESC', '6 airbags'],
-                    adas: ['Parking Sensors', 'Rear Camera'],
-                    variants: ['Active', 'Ambition', 'Style'],
-                    amenities: ['7-inch touchscreen', 'Apple CarPlay', 'Alloy wheels'],
-                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
-                    reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/skoda/slavia/' },
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' }
-                    ],
-                    prices: { 'Hà Nội': 468000000, 'Bắc Ninh': 455000000, 'Hải Dương': 450000000, 'Hải Phòng': 445000000, 'Quảng Ninh': 440000000 },
-                    variantPrices: {
-                        'Active': { 'Hà Nội': 420000000, 'Bắc Ninh': 407000000, 'Hải Dương': 402000000, 'Hải Phòng': 397000000, 'Quảng Ninh': 392000000 },
-                        'Ambition': { 'Hà Nội': 468000000, 'Bắc Ninh': 455000000, 'Hải Dương': 450000000, 'Hải Phòng': 445000000, 'Quảng Ninh': 440000000 },
-                        'Style': { 'Hà Nội': 530000000, 'Bắc Ninh': 517000000, 'Hải Dương': 512000000, 'Hải Phòng': 507000000, 'Quảng Ninh': 502000000 }
-                    }
-                },
-                {
-                    name: 'Skoda Kushaq',
-                    seats: 5,
-                    engineType: 'Xăng',
-                    chassis: 'Monocoque (MQB-A0-IN)',
-                    suspension: 'Trước: MacPherson với thanh chống lật, Sau: Thanh xoắn với lò xo cuộn',
-                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
-                    steering: 'Trợ lực điện',
-                    driveType: 'FWD',
-                    dimensions: '4225 x 1760 x 1612 mm',
-                    weight: '1195 - 1290 kg',
-                    groundClearance: '188 mm',
-                    fuelTank: '50L',
-                    displacement: '999 cc / 1498 cc (Turbo)',
-                    colors: ['Cam Honey', 'Đỏ Velvet', 'Trắng Candy', 'Bạc Carbon'],
-                    type: '5 chỗ SUV',
-                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
-                    engine: '1.0L Turbo 3-cylinder',
-                    power: '115 PS',
-                    fuel: '6.0 L/100km',
-                    transmission: 'AT 6-speed',
-                    safety: ['ABS', 'ESC', '6 airbags'],
-                    adas: ['Cruise Control', 'Parking Sensors'],
-                    variants: ['Ambition', 'Style'],
-                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
-                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
-                    reviews: [
-                        { source: 'KBB', url: 'https://www.kbb.com/skoda/kushaq/' },
-                        { source: 'Motorist.vn', url: 'https://www.motorist.vn/en/' },
-                        { source: 'Zigwheels.vn', url: 'https://www.zigwheels.vn/en/' }
-                    ],
-                    prices: { 'Hà Nội': 599000000, 'Bắc Ninh': 585000000, 'Hải Dương': 580000000, 'Hải Phòng': 575000000, 'Quảng Ninh': 570000000 },
-                    variantPrices: {
-                        'Ambition': { 'Hà Nội': 520000000, 'Bắc Ninh': 506000000, 'Hải Dương': 501000000, 'Hải Phòng': 496000000, 'Quảng Ninh': 491000000 },
-                        'Style': { 'Hà Nội': 599000000, 'Bắc Ninh': 585000000, 'Hải Dương': 580000000, 'Hải Phòng': 575000000, 'Quảng Ninh': 570000000 }
-                    }
-                }
-            ],
-
-            'Toyota': [
+            Toyota: [
                 {
                     name: 'Toyota Camry',
                     seats: 5,
                     engineType: 'HEV / Xăng',
+                    type: '5 chỗ Sedan',
+                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
                     chassis: 'Monocoque (TNGA-K platform)',
                     suspension: 'Trước: MacPherson, Sau: Xương đòn kép',
                     brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
@@ -1193,28 +2139,1494 @@
                     groundClearance: '140 mm',
                     fuelTank: '60L',
                     displacement: '1987 cc / 2487 cc / 2487 cc (Hybrid)',
-                    colors: ['Đen 218', 'Đen 222', 'Trắng ngọc trai 089', 'Đỏ 3U5'],
-                    type: '5 chỗ Sedan',
-                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
+                    colors: [
+                        'Đen 218',
+                        'Đen 222',
+                        'Trắng ngọc trai 089',
+                        'Đỏ 3U5'
+                    ],
                     engine: '2.5L Naturally Aspirated',
                     power: '175 PS',
                     fuel: '7.2 L/100km',
                     transmission: 'AT 8-speed',
-                    safety: ['ABS', 'ESC', 'Toyota Safety Sense', '10 airbags'],
-                    adas: ['Adaptive Cruise Control', 'Lane Keeping', 'Pre-collision System'],
-                    variants: ['Q', 'G', 'Q Special'],
-                    amenities: ['8-inch touchscreen', 'Apple CarPlay', 'Panoramic sunroof'],
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'Toyota Safety Sense',
+                        '10 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Pre-collision System'
+                    ],
+                    variants: [
+                        'Q',
+                        'G',
+                        'Q Special'
+                    ],
+                    amenities: [
+                        '8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Panoramic sunroof'
+                    ],
                     review: 'https://www.youtube.com/@TheCarCareNutReviews',
                     reviews: [
-                        { source: 'Edmunds', url: 'https://www.edmunds.com/toyota/camry/' },
-                        { source: 'Consumer Reports', url: 'https://www.consumerreports.org/cars/toyota/camry/' },
-                        { source: 'KBB', url: 'https://www.kbb.com/toyota/camry/' }
+                        {
+                            source: 'Edmunds',
+                            url: 'https://www.edmunds.com/toyota/camry/'
+                        }
                     ],
-                    prices: { 'Hà Nội': 1220000000, 'Bắc Ninh': 1200000000, 'Hải Dương': 1195000000, 'Hải Phòng': 1190000000, 'Quảng Ninh': 1185000000 },
+                    prices: {
+                        'Hà Nội': 1220000000,
+                        'Bắc Ninh': 1200000000,
+                        'Hải Dương': 1195000000,
+                        'Hải Phòng': 1190000000,
+                        'Quảng Ninh': 1185000000
+                    },
                     variantPrices: {
-                        'Q': { 'Hà Nội': 1060000000, 'Bắc Ninh': 1040000000, 'Hải Dương': 1035000000, 'Hải Phòng': 1030000000, 'Quảng Ninh': 1025000000 },
-                        'G': { 'Hà Nội': 1220000000, 'Bắc Ninh': 1200000000, 'Hải Dương': 1195000000, 'Hải Phòng': 1190000000, 'Quảng Ninh': 1185000000 },
-                        'Q Special': { 'Hà Nội': 1360000000, 'Bắc Ninh': 1340000000, 'Hải Dương': 1335000000, 'Hải Phòng': 1330000000, 'Quảng Ninh': 1325000000 }
+                        Q: {
+                            'Hà Nội': 1060000000,
+                            'Bắc Ninh': 1040000000,
+                            'Hải Dương': 1035000000,
+                            'Hải Phòng': 1030000000,
+                            'Quảng Ninh': 1025000000
+                        },
+                        G: {
+                            'Hà Nội': 1220000000,
+                            'Bắc Ninh': 1200000000,
+                            'Hải Dương': 1195000000,
+                            'Hải Phòng': 1190000000,
+                            'Quảng Ninh': 1185000000
+                        },
+                        'Q Special': {
+                            'Hà Nội': 1360000000,
+                            'Bắc Ninh': 1340000000,
+                            'Hải Dương': 1335000000,
+                            'Hải Phòng': 1330000000,
+                            'Quảng Ninh': 1325000000
+                        }
+                    }
+                },
+                {
+                    name: 'Toyota Corolla Cross',
+                    seats: 5,
+                    engineType: 'HEV / Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (TNGA-C platform)',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4460 x 1825 x 1620 mm',
+                    weight: '1360 - 1410 kg',
+                    groundClearance: '161 mm',
+                    fuelTank: '36L (Hybrid) / 47L (Xăng)',
+                    displacement: '1798 cc',
+                    colors: [
+                        'Đỏ',
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Bạc'
+                    ],
+                    engine: '1.8L Dual VVT-i / Hybrid',
+                    power: '138 - 170 PS',
+                    fuel: '4.3 - 6.8 L/100km',
+                    transmission: 'e-CVT / CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'BA',
+                        'VSC',
+                        '7 airbags'
+                    ],
+                    adas: [
+                        'Toyota Safety Sense',
+                        'Lane Trace Assist',
+                        'Dynamic Radar Cruise Control'
+                    ],
+                    variants: [
+                        '1.8V Xăng',
+                        '1.8HEV Hybrid'
+                    ],
+                    amenities: [
+                        '9-inch screen',
+                        'Apple CarPlay/Android Auto',
+                        'Power tailgate'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Edmunds',
+                            url: 'https://www.edmunds.com'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 820000000,
+                        'Bắc Ninh': 810000000,
+                        'Hải Dương': 805000000,
+                        'Hải Phòng': 800000000,
+                        'Quảng Ninh': 795000000
+                    },
+                    variantPrices: {
+                        '1.8V Xăng': {
+                            'Hà Nội': 820000000,
+                            'Bắc Ninh': 810000000,
+                            'Hải Dương': 805000000,
+                            'Hải Phòng': 800000000,
+                            'Quảng Ninh': 795000000
+                        },
+                        '1.8HEV Hybrid': {
+                            'Hà Nội': 905000000,
+                            'Bắc Ninh': 895000000,
+                            'Hải Dương': 890000000,
+                            'Hải Phòng': 885000000,
+                            'Quảng Ninh': 880000000
+                        }
+                    }
+                },
+                {
+                    name: 'Toyota Fortuner',
+                    seats: 7,
+                    engineType: 'Xăng / Dầu',
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    chassis: 'Body-on-frame',
+                    suspension: 'Trước: Tay đòn kép với thanh cân bằng, Sau: Liên kết 4 điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực thủy lực (HPS)',
+                    driveType: 'RWD / 4WD',
+                    dimensions: '4795 x 1855 x 1835 mm',
+                    weight: '2010 - 2130 kg',
+                    groundClearance: '279 mm',
+                    fuelTank: '80L',
+                    displacement: '2393 cc / 2755 cc (Dầu) / 2694 cc (Xăng)',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Bạc',
+                        'Đồng',
+                        'Xám'
+                    ],
+                    engine: '2.4L Diesel / 2.7L Xăng / 2.8L Diesel',
+                    power: '147 - 201 PS',
+                    fuel: '7.9 - 10.5 L/100km',
+                    transmission: 'AT 6-speed / MT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'VSC',
+                        'HAC',
+                        '7 airbags'
+                    ],
+                    adas: [
+                        'Toyota Safety Sense',
+                        'Pre-Collision System',
+                        'Lane Departure Alert'
+                    ],
+                    variants: [
+                        '2.4L Diesel 4x2',
+                        '2.7L Xăng 4x2',
+                        '2.8L Legender 4x4'
+                    ],
+                    amenities: [
+                        '11-speakers JBL',
+                        'Leather seats',
+                        'Power kick backdoor'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Toyota Vietnam',
+                            url: 'https://www.toyota.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 1050000000,
+                        'Bắc Ninh': 1035000000,
+                        'Hải Dương': 1030000000,
+                        'Hải Phòng': 1025000000,
+                        'Quảng Ninh': 1020000000
+                    },
+                    variantPrices: {
+                        '2.4L Diesel 4x2': {
+                            'Hà Nội': 1050000000,
+                            'Bắc Ninh': 1035000000,
+                            'Hải Dương': 1030000000,
+                            'Hải Phòng': 1025000000,
+                            'Quảng Ninh': 1020000000
+                        },
+                        '2.7L Xăng 4x2': {
+                            'Hà Nội': 1165000000,
+                            'Bắc Ninh': 1150000000,
+                            'Hải Dương': 1145000000,
+                            'Hải Phòng': 1140000000,
+                            'Quảng Ninh': 1135000000
+                        },
+                        '2.8L Legender 4x4': {
+                            'Hà Nội': 1350000000,
+                            'Bắc Ninh': 1335000000,
+                            'Hải Dương': 1330000000,
+                            'Hải Phòng': 1325000000,
+                            'Quảng Ninh': 1320000000
+                        }
+                    }
+                },
+                {
+                    name: 'Toyota Veloz Cross',
+                    seats: 7,
+                    engineType: 'Xăng',
+                    type: '7 chỗ MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (DNGA platform)',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'FWD',
+                    dimensions: '4475 x 1750 x 1700 mm',
+                    weight: '1170 kg',
+                    groundClearance: '205 mm',
+                    fuelTank: '43L',
+                    displacement: '1496 cc',
+                    colors: [
+                        'Trắng ngọc trai',
+                        'Bạc',
+                        'Xám',
+                        'Đỏ'
+                    ],
+                    engine: '1.5L Dual VVT-i',
+                    power: '105 PS',
+                    fuel: '6.3 L/100km',
+                    transmission: 'CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'VSC',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Toyota Safety Sense',
+                        'Pre-Collision System',
+                        'Lane Departure Prevention'
+                    ],
+                    variants: [
+                        'CVT',
+                        'Top'
+                    ],
+                    amenities: [
+                        '9-inch screen',
+                        'Wireless charger',
+                        'Electronic parking brake'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Toyota Veloz Specs',
+                            url: 'https://www.toyota.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 638000000,
+                        'Bắc Ninh': 628000000,
+                        'Hải Dương': 623000000,
+                        'Hải Phòng': 618000000,
+                        'Quảng Ninh': 613000000
+                    },
+                    variantPrices: {
+                        CVT: {
+                            'Hà Nội': 638000000,
+                            'Bắc Ninh': 628000000,
+                            'Hải Dương': 623000000,
+                            'Hải Phòng': 618000000,
+                            'Quảng Ninh': 613000000
+                        },
+                        Top: {
+                            'Hà Nội': 660000000,
+                            'Bắc Ninh': 650000000,
+                            'Hải Dương': 645000000,
+                            'Hải Phòng': 640000000,
+                            'Quảng Ninh': 635000000
+                        }
+                    }
+                },
+                {
+                    name: 'Toyota Innova Cross',
+                    seats: 7,
+                    engineType: 'HEV / Xăng',
+                    type: '7 chỗ MPV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (TNGA-C Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Thanh xoắn',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4755 x 1850 x 1795 mm',
+                    weight: '1540 - 1620 kg',
+                    groundClearance: '170 mm',
+                    fuelTank: '52L',
+                    displacement: '1987 cc',
+                    colors: [
+                        'Đồng',
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Bạc'
+                    ],
+                    engine: '2.0L Dual VVT-i / Hybrid',
+                    power: '172 - 184 PS',
+                    fuel: '4.9 - 7.2 L/100km',
+                    transmission: 'e-CVT / CVT',
+                    safety: [
+                        'ABS',
+                        'EBD',
+                        'BA',
+                        'VSC',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Toyota Safety Sense',
+                        'Adaptive Cruise Control',
+                        'Lane Tracing Assist'
+                    ],
+                    variants: [
+                        '2.0V Xăng',
+                        '2.0HEV Hybrid'
+                    ],
+                    amenities: [
+                        'Panoramic sunroof',
+                        'Captain chairs with power recline',
+                        '10.1-inch screen'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Toyota Innova Cross Info',
+                            url: 'https://www.toyota.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 810000000,
+                        'Bắc Ninh': 800000000,
+                        'Hải Dương': 795000000,
+                        'Hải Phòng': 790000000,
+                        'Quảng Ninh': 795000000
+                    },
+                    variantPrices: {
+                        '2.0V Xăng': {
+                            'Hà Nội': 810000000,
+                            'Bắc Ninh': 800000000,
+                            'Hải Dương': 795000000,
+                            'Hải Phòng': 790000000,
+                            'Quảng Ninh': 785000000
+                        },
+                        '2.0HEV Hybrid': {
+                            'Hà Nội': 990000000,
+                            'Bắc Ninh': 980000000,
+                            'Hải Dương': 975000000,
+                            'Hải Phòng': 970000000,
+                            'Quảng Ninh': 965000000
+                        }
+                    }
+                }
+            ],
+            Ford: [
+                {
+                    name: 'Ford Everest',
+                    seats: 7,
+                    engineType: 'Dầu',
+                    type: '7 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    chassis: 'Body-on-frame',
+                    suspension: 'Trước: MacPherson với thanh cân bằng, Sau: Watts Linkage',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPAS)',
+                    driveType: 'RWD / 4WD',
+                    dimensions: '4914 x 1923 x 1842 mm',
+                    weight: '2250 - 2380 kg',
+                    groundClearance: '200 mm',
+                    fuelTank: '80L',
+                    displacement: '1996 cc',
+                    colors: [
+                        'Trắng tuyết',
+                        'Đen',
+                        'Đỏ cam',
+                        'Ghi vàng',
+                        'Xám'
+                    ],
+                    engine: '2.0L Bi-Turbo Diesel',
+                    power: '170 - 210 PS',
+                    fuel: '7.5 - 8.5 L/100km',
+                    transmission: 'AT 10-speed / AT 6-speed',
+                    safety: [
+                        'ABS',
+                        'ESP',
+                        'HLA',
+                        '7 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping Assist',
+                        'Active Park Assist',
+                        'Cross Traffic Alert'
+                    ],
+                    variants: [
+                        'Sport 2.0L 4x2',
+                        'Titanium 2.0L 4x2',
+                        'Titanium+ 2.0L 4x4'
+                    ],
+                    amenities: [
+                        '12-inch vertical screen',
+                        'B&O 8-speakers',
+                        'Panoramic sunroof',
+                        'Wireless Apple CarPlay'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Ford Vietnam Specs',
+                            url: 'https://www.ford.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 1178000000,
+                        'Bắc Ninh': 1160000000,
+                        'Hải Dương': 1155000000,
+                        'Hải Phòng': 1150000000,
+                        'Quảng Ninh': 1145000000
+                    },
+                    variantPrices: {
+                        'Sport 2.0L 4x2': {
+                            'Hà Nội': 1178000000,
+                            'Bắc Ninh': 1168000000,
+                            'Hải Dương': 1163000000,
+                            'Hải Phòng': 1158000000,
+                            'Quảng Ninh': 1153000000
+                        },
+                        'Titanium 2.0L 4x2': {
+                            'Hà Nội': 1299000000,
+                            'Bắc Ninh': 1289000000,
+                            'Hải Dương': 1284000000,
+                            'Hải Phòng': 1279000000,
+                            'Quảng Ninh': 1274000000
+                        },
+                        'Titanium+ 2.0L 4x4': {
+                            'Hà Nội': 1468000000,
+                            'Bắc Ninh': 1458000000,
+                            'Hải Dương': 1453000000,
+                            'Hải Phòng': 1448000000,
+                            'Quảng Ninh': 1443000000
+                        }
+                    }
+                },
+                {
+                    name: 'Ford Ranger',
+                    seats: 5,
+                    engineType: 'Dầu',
+                    type: '5 chỗ Bán tải',
+                    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+                    chassis: 'Body-on-frame',
+                    suspension: 'Trước: Nhíp lá, Sau: Nhíp độc lập',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Tang trống / Đĩa',
+                    steering: 'Trợ lực điện (EPAS)',
+                    driveType: 'RWD / 4WD',
+                    dimensions: '5362 x 1918 x 1875 mm',
+                    weight: '2050 - 2280 kg',
+                    groundClearance: '235 mm',
+                    fuelTank: '80L',
+                    displacement: '1996 cc',
+                    colors: [
+                        'Cam Wildtrak',
+                        'Trắng',
+                        'Đen',
+                        'Xám',
+                        'Bạc'
+                    ],
+                    engine: '2.0L Single/Bi-Turbo Diesel',
+                    power: '170 - 210 PS',
+                    fuel: '7.2 - 8.2 L/100km',
+                    transmission: 'AT 10-speed / AT 6-speed / MT',
+                    safety: [
+                        'ABS',
+                        'ESP',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Lane Keeping Assist',
+                        'Adaptive Cruise Control',
+                        'Collision Warning'
+                    ],
+                    variants: [
+                        'XLS 2.0L 4x2 AT',
+                        'Sport 2.0L 4x4 AT',
+                        'Wildtrak 2.0L 4x4 AT'
+                    ],
+                    amenities: [
+                        '12-inch vertical screen',
+                        'SYNC 4',
+                        'Alloy wheels',
+                        'Bedliner'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Ford Ranger Specs',
+                            url: 'https://www.ford.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 665000000,
+                        'Bắc Ninh': 655000000,
+                        'Hải Dương': 650000000,
+                        'Hải Phòng': 645000000,
+                        'Quảng Ninh': 640000000
+                    },
+                    variantPrices: {
+                        'XLS 2.0L 4x2 AT': {
+                            'Hà Nội': 707000000,
+                            'Bắc Ninh': 697000000,
+                            'Hải Dương': 692000000,
+                            'Hải Phòng': 687000000,
+                            'Quảng Ninh': 682000000
+                        },
+                        'Sport 2.0L 4x4 AT': {
+                            'Hà Nội': 864000000,
+                            'Bắc Ninh': 854000000,
+                            'Hải Dương': 849000000,
+                            'Hải Phòng': 844000000,
+                            'Quảng Ninh': 839000000
+                        },
+                        'Wildtrak 2.0L 4x4 AT': {
+                            'Hà Nội': 979000000,
+                            'Bắc Ninh': 969000000,
+                            'Hải Dương': 964000000,
+                            'Hải Phòng': 959000000,
+                            'Quảng Ninh': 954000000
+                        }
+                    }
+                },
+                {
+                    name: 'Ford Territory',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Đa liên kết',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa đặc',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4630 x 1935 x 1706 mm',
+                    weight: '1630 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: '60L',
+                    displacement: '1490 cc',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Cát'
+                    ],
+                    engine: '1.5L Ecoboost Turbo',
+                    power: '160 PS',
+                    fuel: '7.0 L/100km',
+                    transmission: '7-speed DCT Wet',
+                    safety: [
+                        'ABS',
+                        'ESP',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Co-Pilot 360',
+                        'Adaptive Cruise Control',
+                        'Collision Warning',
+                        'Active Park Assist'
+                    ],
+                    variants: [
+                        'Trend',
+                        'Titanium',
+                        'Titanium X'
+                    ],
+                    amenities: [
+                        'Dual 12.3-inch screen',
+                        'Panoramic sunroof',
+                        'Wireless charger',
+                        'Ventilated seats'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Ford Territory Details',
+                            url: 'https://www.ford.com.vn'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 799000000,
+                        'Bắc Ninh': 789000000,
+                        'Hải Dương': 784000000,
+                        'Hải Phòng': 779000000,
+                        'Quảng Ninh': 774000000
+                    },
+                    variantPrices: {
+                        Trend: {
+                            'Hà Nội': 799000000,
+                            'Bắc Ninh': 789000000,
+                            'Hải Dương': 784000000,
+                            'Hải Phòng': 779000000,
+                            'Quảng Ninh': 774000000
+                        },
+                        Titanium: {
+                            'Hà Nội': 899000000,
+                            'Bắc Ninh': 889000000,
+                            'Hải Dương': 884000000,
+                            'Hải Phòng': 879000000,
+                            'Quảng Ninh': 874000000
+                        },
+                        'Titanium X': {
+                            'Hà Nội': 929000000,
+                            'Bắc Ninh': 919000000,
+                            'Hải Dương': 914000000,
+                            'Hải Phòng': 909000000,
+                            'Quảng Ninh': 904000000
+                        }
+                    }
+                }
+            ],
+            VinFast: [
+                {
+                    name: 'VinFast VF 6',
+                    seats: 5,
+                    engineType: 'EV',
+                    type: '5 chỗ Electric SUV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Giằng xoắn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4238 x 1820 x 1594 mm',
+                    weight: '1550 kg',
+                    groundClearance: '170 mm',
+                    fuelTank: 'Pin LFP 59.6 kWh (Tầm hoạt động 399 km)',
+                    displacement: 'Động cơ điện (N/A)',
+                    colors: [
+                        'Cam',
+                        'Trắng',
+                        'Xám',
+                        'Xanh dương'
+                    ],
+                    engine: 'Động cơ điện đơn',
+                    power: '134 - 201 PS',
+                    fuel: '0 L/100km (EV)',
+                    transmission: 'Single speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'HAC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'ADAS Level 2',
+                        'Highway Assist',
+                        'Lane Keep Assist',
+                        'Adaptive Cruise Control'
+                    ],
+                    variants: [
+                        'Eco',
+                        'Plus'
+                    ],
+                    amenities: [
+                        '12.9-inch touchscreen',
+                        'HUD',
+                        'Voice Assistant Vivi'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'VinFast Global',
+                            url: 'https://vinfastauto.com'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 675000000,
+                        'Bắc Ninh': 665000000,
+                        'Hải Dương': 660000000,
+                        'Hải Phòng': 655000000,
+                        'Quảng Ninh': 650000000
+                    },
+                    variantPrices: {
+                        Eco: {
+                            'Hà Nội': 675000000,
+                            'Bắc Ninh': 665000000,
+                            'Hải Dương': 660000000,
+                            'Hải Phòng': 655000000,
+                            'Quảng Ninh': 650000000
+                        },
+                        Plus: {
+                            'Hà Nội': 765000000,
+                            'Bắc Ninh': 755000000,
+                            'Hải Dương': 750000000,
+                            'Hải Phòng': 745000000,
+                            'Quảng Ninh': 740000000
+                        }
+                    }
+                },
+                {
+                    name: 'VinFast VF 7',
+                    seats: 5,
+                    engineType: 'EV',
+                    type: '5 chỗ Electric SUV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD / AWD',
+                    dimensions: '4545 x 1890 x 1635.5 mm',
+                    weight: '1850 - 2010 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: 'Pin LFP 75.3 kWh (Tầm hoạt động 431 km)',
+                    displacement: 'Động cơ điện (N/A)',
+                    colors: [
+                        'Xám xi măng',
+                        'Trắng',
+                        'Đen',
+                        'Đỏ'
+                    ],
+                    engine: 'Động cơ điện đơn/đôi',
+                    power: '174 - 349 PS',
+                    fuel: '0 L/100km (EV)',
+                    transmission: 'Single speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'HAC',
+                        '8 airbags'
+                    ],
+                    adas: [
+                        'ADAS Level 2',
+                        'Smart Cruise Control',
+                        'Traffic Jam Assist'
+                    ],
+                    variants: [
+                        'Eco',
+                        'Plus',
+                        'Plus AWD'
+                    ],
+                    amenities: [
+                        '12.9-inch touchscreen',
+                        'HUD',
+                        'Voice control',
+                        'Panoramic sunroof option'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'VinFast VF7 Info',
+                            url: 'https://vinfastauto.com'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 850000000,
+                        'Bắc Ninh': 840000000,
+                        'Hải Dương': 835000000,
+                        'Hải Phòng': 830000000,
+                        'Quảng Ninh': 825000000
+                    },
+                    variantPrices: {
+                        Eco: {
+                            'Hà Nội': 850000000,
+                            'Bắc Ninh': 840000000,
+                            'Hải Dương': 835000000,
+                            'Hải Phòng': 830000000,
+                            'Quảng Ninh': 825000000
+                        },
+                        Plus: {
+                            'Hà Nội': 999000000,
+                            'Bắc Ninh': 989000000,
+                            'Hải Dương': 984000000,
+                            'Hải Phòng': 979000000,
+                            'Quảng Ninh': 974000000
+                        },
+                        'Plus AWD': {
+                            'Hà Nội': 1199000000,
+                            'Bắc Ninh': 1189000000,
+                            'Hải Dương': 1184000000,
+                            'Hải Phòng': 1179000000,
+                            'Quảng Ninh': 1174000000
+                        }
+                    }
+                },
+                {
+                    name: 'VinFast VF 8',
+                    seats: 5,
+                    engineType: 'EV',
+                    type: '5 chỗ Electric SUV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'AWD',
+                    dimensions: '4750 x 1934 x 1667 mm',
+                    weight: '2200 kg',
+                    groundClearance: '180 mm',
+                    fuelTank: 'Pin SDI 87.7 kWh (Tầm hoạt động 471 km)',
+                    displacement: 'Động cơ điện (N/A)',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Đỏ',
+                        'Bạc',
+                        'Xanh đen'
+                    ],
+                    engine: 'Động cơ điện kép AWD',
+                    power: '348 - 402 PS',
+                    fuel: '0 L/100km (EV)',
+                    transmission: 'Single speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        'HAC',
+                        '11 airbags'
+                    ],
+                    adas: [
+                        'ADAS Level 2+',
+                        'Highway Assist',
+                        'Auto Lane Changing',
+                        'Remote Parking'
+                    ],
+                    variants: [
+                        'Eco',
+                        'Plus'
+                    ],
+                    amenities: [
+                        '15.6-inch center screen',
+                        'HUD',
+                        'Heated seats',
+                        'Vivi voice assistant'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Edmunds VF8 Review',
+                            url: 'https://www.edmunds.com/vinfast/vf-8/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 1090000000,
+                        'Bắc Ninh': 1080000000,
+                        'Hải Dương': 1075000000,
+                        'Hải Phòng': 1070000000,
+                        'Quảng Ninh': 1065000000
+                    },
+                    variantPrices: {
+                        Eco: {
+                            'Hà Nội': 1090000000,
+                            'Bắc Ninh': 1080000000,
+                            'Hải Dương': 1075000000,
+                            'Hải Phòng': 1070000000,
+                            'Quảng Ninh': 1065000000
+                        },
+                        Plus: {
+                            'Hà Nội': 1270000000,
+                            'Bắc Ninh': 1260000000,
+                            'Hải Dương': 1255000000,
+                            'Hải Phòng': 1250000000,
+                            'Quảng Ninh': 1245000000
+                        }
+                    }
+                }
+            ],
+            Geely: [
+                {
+                    name: 'Geely Monjaro',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (CMA Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện (EPS)',
+                    driveType: 'AWD (4WD)',
+                    dimensions: '4770 x 1895 x 1689 mm',
+                    weight: '1780 kg',
+                    groundClearance: '210 mm',
+                    fuelTank: '62L',
+                    displacement: '1969 cc (Turbo)',
+                    colors: [
+                        'Trắng',
+                        'Đen',
+                        'Xám xanh',
+                        'Bạc'
+                    ],
+                    engine: '1.5L Turbo/1.8L Turbo',
+                    power: '177 PS / 218 PS',
+                    fuel: '6.5 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '8 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Blind Spot Monitor'
+                    ],
+                    variants: [
+                        'Comfort',
+                        'Luxury',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '12.3-inch touchscreen',
+                        'Apple CarPlay',
+                        'Panoramic sunroof'
+                    ],
+                    review: 'https://www.youtube.com/watch?v=oKXjSYQQtHs',
+                    reviews: [
+                        {
+                            source: 'YouTube (Daniel Chavarría 2026 Review)',
+                            url: 'https://www.youtube.com/watch?v=oKXjSYQQtHs'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 680000000,
+                        'Bắc Ninh': 665000000,
+                        'Hải Dương': 660000000,
+                        'Hải Phòng': 655000000,
+                        'Quảng Ninh': 650000000
+                    },
+                    variantPrices: {
+                        Comfort: {
+                            'Hà Nội': 580000000,
+                            'Bắc Ninh': 565000000,
+                            'Hải Dương': 560000000,
+                            'Hải Phòng': 555000000,
+                            'Quảng Ninh': 550000000
+                        },
+                        Luxury: {
+                            'Hà Nội': 680000000,
+                            'Bắc Ninh': 665000000,
+                            'Hải Dương': 660000000,
+                            'Hải Phòng': 655000000,
+                            'Quảng Ninh': 650000000
+                        },
+                        Premium: {
+                            'Hà Nội': 820000000,
+                            'Bắc Ninh': 805000000,
+                            'Hải Dương': 800000000,
+                            'Hải Phòng': 795000000,
+                            'Quảng Ninh': 790000000
+                        }
+                    }
+                }
+            ],
+            'Omoda/Jaeceo': [
+                {
+                    name: 'Omoda C5',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque unibody',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm (bản cao) / Dầm xoắn',
+                    brakes: 'Trước: Đĩa tản nhiệt, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4400 x 1830 x 1585 mm',
+                    weight: '1420 - 1455 kg',
+                    groundClearance: '190 mm',
+                    fuelTank: '51L',
+                    displacement: '1498 cc (Turbo)',
+                    colors: [
+                        'Xám đậm',
+                        'Trắng',
+                        'Đen',
+                        'Xanh dương',
+                        'Bạc'
+                    ],
+                    engine: '1.6L Turbo',
+                    power: '197 PS',
+                    fuel: '6.8 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '8 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Parking Assist'
+                    ],
+                    variants: [
+                        'Comfort',
+                        'Premium',
+                        'Flagship'
+                    ],
+                    amenities: [
+                        '10.25-inch touchscreen',
+                        'Apple CarPlay',
+                        'Sunroof'
+                    ],
+                    review: 'https://www.parkers.co.uk/omoda/5/review/',
+                    reviews: [
+                        {
+                            source: 'Parkers Review',
+                            url: 'https://www.parkers.co.uk/omoda/5/review/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 720000000,
+                        'Bắc Ninh': 700000000,
+                        'Hải Dương': 695000000,
+                        'Hải Phòng': 690000000,
+                        'Quảng Ninh': 685000000
+                    },
+                    variantPrices: {
+                        Comfort: {
+                            'Hà Nội': 620000000,
+                            'Bắc Ninh': 600000000,
+                            'Hải Dương': 595000000,
+                            'Hải Phòng': 590000000,
+                            'Quảng Ninh': 585000000
+                        },
+                        Premium: {
+                            'Hà Nội': 720000000,
+                            'Bắc Ninh': 700000000,
+                            'Hải Dương': 695000000,
+                            'Hải Phòng': 690000000,
+                            'Quảng Ninh': 685000000
+                        },
+                        Flagship: {
+                            'Hà Nội': 850000000,
+                            'Bắc Ninh': 830000000,
+                            'Hải Dương': 825000000,
+                            'Hải Phòng': 820000000,
+                            'Quảng Ninh': 815000000
+                        }
+                    }
+                }
+            ],
+            'Lynk & Co': [
+                {
+                    name: 'Lynk & Co 05',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (CMA Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'AWD',
+                    dimensions: '4592 x 1879 x 1628 mm',
+                    weight: '1788 kg',
+                    groundClearance: '185 mm',
+                    fuelTank: '54L',
+                    displacement: '1969 cc (Turbo)',
+                    colors: [
+                        'Đen',
+                        'Xám',
+                        'Trắng'
+                    ],
+                    engine: '2.0L Turbo',
+                    power: '238 PS',
+                    fuel: '7.2 L/100km',
+                    transmission: 'AT 8-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '8 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Blind Spot Monitor'
+                    ],
+                    variants: [
+                        'Plus',
+                        'Pro',
+                        'Premium'
+                    ],
+                    amenities: [
+                        '12.3-inch touchscreen',
+                        'Apple CarPlay',
+                        'Panoramic sunroof'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Motorist.vn',
+                            url: 'https://www.motorist.vn/en/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 1590000000,
+                        'Bắc Ninh': 1550000000,
+                        'Hải Dương': 1540000000,
+                        'Hải Phòng': 1530000000,
+                        'Quảng Ninh': 1520000000
+                    },
+                    variantPrices: {
+                        Plus: {
+                            'Hà Nội': 1390000000,
+                            'Bắc Ninh': 1350000000,
+                            'Hải Dương': 1340000000,
+                            'Hải Phòng': 1330000000,
+                            'Quảng Ninh': 1320000000
+                        },
+                        Pro: {
+                            'Hà Nội': 1590000000,
+                            'Bắc Ninh': 1550000000,
+                            'Hải Dương': 1540000000,
+                            'Hải Phòng': 1530000000,
+                            'Quảng Ninh': 1520000000
+                        },
+                        Premium: {
+                            'Hà Nội': 1800000000,
+                            'Bắc Ninh': 1760000000,
+                            'Hải Dương': 1750000000,
+                            'Hải Phòng': 1740000000,
+                            'Quảng Ninh': 1730000000
+                        }
+                    }
+                },
+                {
+                    name: 'Lynk & Co 06',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: 'B-segment Crossover',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (BMA Platform)',
+                    suspension: 'Trước: MacPherson, Sau: Đa liên kết độc lập',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4340 x 1820 x 1625 mm',
+                    weight: '1465 kg',
+                    groundClearance: '168 mm',
+                    fuelTank: '51L',
+                    displacement: '1499 cc (Turbo)',
+                    colors: [
+                        'Hồng pastel',
+                        'Xanh',
+                        'Trắng',
+                        'Xám'
+                    ],
+                    engine: '1.5L Turbo',
+                    power: '177 PS',
+                    fuel: '6.2 L/100km',
+                    transmission: 'AT 7-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Cruise Control',
+                        'Parking Sensors'
+                    ],
+                    variants: [
+                        'Core',
+                        'Core Plus',
+                        'Flagship'
+                    ],
+                    amenities: [
+                        '10.25-inch touchscreen',
+                        'Apple CarPlay'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'Motorist.vn',
+                            url: 'https://www.motorist.vn/en/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 679000000,
+                        'Bắc Ninh': 665000000,
+                        'Hải Dương': 660000000,
+                        'Hải Phòng': 655000000,
+                        'Quảng Ninh': 650000000
+                    },
+                    variantPrices: {
+                        Core: {
+                            'Hà Nội': 579000000,
+                            'Bắc Ninh': 565000000,
+                            'Hải Dương': 560000000,
+                            'Hải Phòng': 555000000,
+                            'Quảng Ninh': 550000000
+                        },
+                        'Core Plus': {
+                            'Hà Nội': 679000000,
+                            'Bắc Ninh': 665000000,
+                            'Hải Dương': 660000000,
+                            'Hải Phòng': 655000000,
+                            'Quảng Ninh': 650000000
+                        },
+                        Flagship: {
+                            'Hà Nội': 779000000,
+                            'Bắc Ninh': 765000000,
+                            'Hải Dương': 760000000,
+                            'Hải Phòng': 755000000,
+                            'Quảng Ninh': 750000000
+                        }
+                    }
+                }
+            ],
+            BYD: [
+                {
+                    name: 'BYD Sealion 6 DM-i',
+                    seats: 5,
+                    engineType: 'PHEV',
+                    type: 'Hybrid Sedan',
+                    image: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4775 x 1890 x 1670 mm',
+                    weight: '1810 kg',
+                    groundClearance: '155 mm',
+                    fuelTank: '60L + Pin 18.3 kWh',
+                    displacement: '1498 cc + Motor điện',
+                    colors: [
+                        'Trắng',
+                        'Xám',
+                        'Đen',
+                        'Xanh'
+                    ],
+                    engine: '1.5L Turbo + Hybrid',
+                    power: '160 PS EV Range',
+                    fuel: '4.5 L/100km',
+                    transmission: 'DHT',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '8 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Parking Assist'
+                    ],
+                    variants: [
+                        'Comfort',
+                        'Premium',
+                        'Luxury'
+                    ],
+                    amenities: [
+                        '12.8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Leather seats'
+                    ],
+                    review: 'https://www.carsguide.com.au/ev/byd-sealion-6-essential-99385',
+                    reviews: [
+                        {
+                            source: 'CarsGuide',
+                            url: 'https://www.carsguide.com.au/ev/byd-sealion-6-essential-99385'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 820000000,
+                        'Bắc Ninh': 800000000,
+                        'Hải Dương': 795000000,
+                        'Hải Phòng': 790000000,
+                        'Quảng Ninh': 785000000
+                    },
+                    variantPrices: {
+                        Comfort: {
+                            'Hà Nội': 720000000,
+                            'Bắc Ninh': 700000000,
+                            'Hải Dương': 695000000,
+                            'Hải Phòng': 690000000,
+                            'Quảng Ninh': 685000000
+                        },
+                        Premium: {
+                            'Hà Nội': 820000000,
+                            'Bắc Ninh': 800000000,
+                            'Hải Dương': 795000000,
+                            'Hải Phòng': 790000000,
+                            'Quảng Ninh': 785000000
+                        },
+                        Luxury: {
+                            'Hà Nội': 950000000,
+                            'Bắc Ninh': 930000000,
+                            'Hải Dương': 925000000,
+                            'Hải Phòng': 920000000,
+                            'Quảng Ninh': 915000000
+                        }
+                    }
+                },
+                {
+                    name: 'BYD Yuan Plus EV',
+                    seats: 5,
+                    engineType: 'EV',
+                    type: 'Compact Electric SUV',
+                    image: 'https://images.unsplash.com/photo-1618044534277-80f4bfb00c3a?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (e-Platform 3.0)',
+                    suspension: 'Trước: MacPherson, Sau: Liên kết đa điểm',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Đĩa',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4455 x 1875 x 1615 mm',
+                    weight: '1625 kg',
+                    groundClearance: '175 mm',
+                    fuelTank: 'Pin Blade LFP 60.48 kWh',
+                    displacement: 'Động cơ điện (N/A)',
+                    colors: [
+                        'Xanh lá',
+                        'Xanh dương',
+                        'Xám',
+                        'Trắng',
+                        'Đỏ'
+                    ],
+                    engine: 'Electric 305 km range',
+                    power: '200 PS',
+                    fuel: '0 L/100km (EV)',
+                    transmission: 'Single speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '8 airbags'
+                    ],
+                    adas: [
+                        'Adaptive Cruise Control',
+                        'Lane Keeping',
+                        'Autonomous Parking'
+                    ],
+                    variants: [
+                        'Standard',
+                        'Premium',
+                        'Luxury'
+                    ],
+                    amenities: [
+                        '12.8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Panoramic sunroof'
+                    ],
+                    review: 'https://cleantechnica.com/',
+                    reviews: [
+                        {
+                            source: 'CleanTechnica',
+                            url: 'https://cleantechnica.com/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 750000000,
+                        'Bắc Ninh': 730000000,
+                        'Hải Dương': 725000000,
+                        'Hải Phòng': 720000000,
+                        'Quảng Ninh': 715000000
+                    },
+                    variantPrices: {
+                        Standard: {
+                            'Hà Nội': 640000000,
+                            'Bắc Ninh': 620000000,
+                            'Hải Dương': 615000000,
+                            'Hải Phòng': 610000000,
+                            'Quảng Ninh': 605000000
+                        },
+                        Premium: {
+                            'Hà Nội': 750000000,
+                            'Bắc Ninh': 730000000,
+                            'Hải Dương': 725000000,
+                            'Hải Phòng': 720000000,
+                            'Quảng Ninh': 715000000
+                        },
+                        Luxury: {
+                            'Hà Nội': 880000000,
+                            'Bắc Ninh': 860000000,
+                            'Hải Dương': 855000000,
+                            'Hải Phòng': 850000000,
+                            'Quảng Ninh': 845000000
+                        }
+                    }
+                }
+            ],
+            Skoda: [
+                {
+                    name: 'Skoda Kushaq',
+                    seats: 5,
+                    engineType: 'Xăng',
+                    type: '5 chỗ SUV',
+                    image: 'https://images.unsplash.com/photo-1609335314515-3df0e8d4a3d2?w=400&h=300&fit=crop',
+                    chassis: 'Monocoque (MQB-A0-IN)',
+                    suspension: 'Trước: MacPherson với thanh chống lật, Sau: Thanh xoắn với lò xo cuộn',
+                    brakes: 'Trước: Đĩa thông gió, Sau: Tang trống',
+                    steering: 'Trợ lực điện',
+                    driveType: 'FWD',
+                    dimensions: '4225 x 1760 x 1612 mm',
+                    weight: '1195 - 1290 kg',
+                    groundClearance: '188 mm',
+                    fuelTank: '50L',
+                    displacement: '999 cc / 1498 cc (Turbo)',
+                    colors: [
+                        'Cam Honey',
+                        'Đỏ Velvet',
+                        'Trắng Candy',
+                        'Bạc Carbon'
+                    ],
+                    engine: '1.0L Turbo 3-cylinder',
+                    power: '115 PS',
+                    fuel: '6.0 L/100km',
+                    transmission: 'AT 6-speed',
+                    safety: [
+                        'ABS',
+                        'ESC',
+                        '6 airbags'
+                    ],
+                    adas: [
+                        'Cruise Control',
+                        'Parking Sensors'
+                    ],
+                    variants: [
+                        'Ambition',
+                        'Style'
+                    ],
+                    amenities: [
+                        '8-inch touchscreen',
+                        'Apple CarPlay',
+                        'Panoramic sunroof'
+                    ],
+                    review: 'https://www.youtube.com/@TheCarCareNutReviews',
+                    reviews: [
+                        {
+                            source: 'KBB',
+                            url: 'https://www.kbb.com/skoda/kushaq/'
+                        }
+                    ],
+                    prices: {
+                        'Hà Nội': 599000000,
+                        'Bắc Ninh': 585000000,
+                        'Hải Dương': 580000000,
+                        'Hải Phòng': 575000000,
+                        'Quảng Ninh': 570000000
+                    },
+                    variantPrices: {
+                        Ambition: {
+                            'Hà Nội': 520000000,
+                            'Bắc Ninh': 506000000,
+                            'Hải Dương': 501000000,
+                            'Hải Phòng': 496000000,
+                            'Quảng Ninh': 491000000
+                        },
+                        Style: {
+                            'Hà Nội': 599000000,
+                            'Bắc Ninh': 585000000,
+                            'Hải Dương': 580000000,
+                            'Hải Phòng': 575000000,
+                            'Quảng Ninh': 570000000
+                        }
                     }
                 }
             ]
@@ -1227,7 +3639,29 @@
         window.addEventListener('DOMContentLoaded', function() {
             loadTheme();
             populateBrandDropdown();
-            displayAllCars();
+            
+            // Tự động đồng bộ bảng giá xe realtime mới nhất từ API Server Google Cloud
+            fetch('http://34.42.101.193:5000/api/prices')
+            .then(response => response.json())
+            .then(res => {
+                if (res.success && res.data) {
+                    Object.keys(res.data).forEach(carName => {
+                        const apiCar = res.data[carName];
+                        Object.keys(cars).forEach(brand => {
+                            const car = cars[brand].find(c => c.name === carName);
+                            if (car && apiCar.prices) {
+                                car.prices = apiCar.prices;
+                            }
+                        });
+                    });
+                    console.log("✅ Đã đồng bộ bảng giá xe realtime mới nhất từ API Server Google Cloud!");
+                }
+                displayAllCars();
+            })
+            .catch(err => {
+                console.warn("⚠️ Không thể kết nối API Server, sử dụng giá offline mặc định:", err);
+                displayAllCars();
+            });
         });
 
         function toggleTheme() {
