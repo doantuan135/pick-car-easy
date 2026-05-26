@@ -3760,9 +3760,9 @@
                 const price = car.prices[selectedRegion] / 1000000;
 
                 let badgeBg = 'var(--primary)';
-                if (car.engineType.includes('EV')) badgeBg = 'var(--success)';
-                else if (car.engineType.includes('PHEV')) badgeBg = '#8b5cf6';
+                if (car.engineType.includes('PHEV')) badgeBg = '#8b5cf6';
                 else if (car.engineType.includes('HEV')) badgeBg = 'var(--secondary)';
+                else if (car.engineType.includes('EV')) badgeBg = 'var(--success)';
                 else if (car.engineType.includes('Dầu')) badgeBg = '#6b7280';
 
                 carEl.innerHTML = `
